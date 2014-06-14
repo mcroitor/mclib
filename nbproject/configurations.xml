@@ -8,6 +8,7 @@
       <itemPath>defines.h</itemPath>
       <itemPath>matrix.h</itemPath>
       <itemPath>geometry/point.h</itemPath>
+      <itemPath>geometry/vector.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -16,6 +17,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>defines.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -49,6 +51,8 @@
       </compileType>
       <item path="array.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="defines.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="defines.h" ex="false" tool="3" flavor2="0">
       </item>
       <folder path="TestFiles/f1">
@@ -67,6 +71,8 @@
         </linkerTool>
       </folder>
       <item path="geometry/point.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="geometry/vector.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="matrix.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -97,6 +103,8 @@
       </compileType>
       <item path="array.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="defines.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="defines.h" ex="false" tool="3" flavor2="0">
       </item>
       <folder path="TestFiles/f1">
@@ -115,6 +123,8 @@
         </linkerTool>
       </folder>
       <item path="geometry/point.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="geometry/vector.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="matrix.h" ex="false" tool="3" flavor2="0">
       </item>
