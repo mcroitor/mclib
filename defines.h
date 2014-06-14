@@ -22,6 +22,15 @@ namespace mc {
     const double PI = 3.14159265358979;
     const double EPS = 0.000001;
     const uint MAX_ITERATIONS = 10000;
+    
+    template<class TYPE>
+    TYPE abs(const TYPE& p){
+        return (p > 0) ? p : -p;
+    }
+    
+    bool dbl_compare(const double& p1, const double& p2){
+        return mc::abs(p1 - p2) < EPS;
+    }
 }
 #endif	/* DEFINES_H */
 
