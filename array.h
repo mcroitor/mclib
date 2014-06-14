@@ -47,6 +47,11 @@ namespace mc {
             return *this;
         }
         TYPE& operator [](const size_t& i) {
+            if (i > SIZE) throw BOUND_ERROR;
+            return el[i];
+        }
+        const TYPE& operator [](const size_t& i) const{
+            if (i > SIZE) throw BOUND_ERROR;
             return el[i];
         }
 

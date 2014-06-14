@@ -1,6 +1,6 @@
 #ifndef MC_DEFINES_H
 #define	MC_DEFINES_H
-
+#include <string>
 /**
  * some usefull constants
  */
@@ -34,9 +34,7 @@ namespace mc {
         return (p > 0) ? p : -p;
     }
 
-    bool dbl_compare(const double& p1, const double& p2) {
-        return mc::abs(p1 - p2) < EPS;
-    }
+    bool dbl_compare(const double&, const double&);
 
     /**
      * square root with EPS precision
