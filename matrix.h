@@ -19,11 +19,40 @@ namespace mc {
 
         matrix() {
         }
-        ROW_TYPE& operator [](const size_t& index) {
+
+        ROW_TYPE& operator[](const size_t& index) {
             return elements[index];
         }
-        const ROW_TYPE& operator [](const size_t& index) const {
+
+        const ROW_TYPE& operator[](const size_t& index) const {
             return elements[index];
+        }
+
+        matrix<TYPE, NUM_ROWS, NUM_COLS>& operator=(const matrix<TYPE, NUM_ROWS, NUM_COLS>& m) {
+            elements = m.elements;
+            return * this;
+        }
+
+        bool operator==(const matrix<TYPE, NUM_ROWS, NUM_COLS>& m) const {
+            return elements == m.elements;
+        }
+
+        void operator+=(const matrix<TYPE, NUM_ROWS, NUM_COLS>& m) {
+            size_t i, j;
+            for (i = 0; i != NUM_ROWS; ++i) {
+                for (j = 0; j != NUM_COLS; ++j) {
+                    elements[i][j] += m.elements[i][j];
+                }
+            }
+        }
+
+        void operator-=(const matrix<TYPE, NUM_ROWS, NUM_COLS>& m) {
+            size_t i, j;
+            for (i = 0; i != NUM_ROWS; ++i) {
+                for (j = 0; j != NUM_COLS; ++j) {
+                    elements[i][j] -= m.elements[i][j];
+                }
+            }
         }
     };
 
@@ -37,6 +66,44 @@ namespace mc {
             }
         }
         return result;
+    }
+
+    template<class TYPE, size_t NUM_ROWS, size_t NUM_COLS>
+    matrix<TYPE, NUM_ROWS, NUM_COLS> operator+(const matrix<TYPE, NUM_ROWS, NUM_COLS>& m1, const matrix<TYPE, NUM_ROWS, NUM_COLS>& m2) {
+        matrix<TYPE, NUM_ROWS, NUM_COLS> tmp(m1);
+        tmp += m2;
+        return tmp;
+    }
+
+    template<class TYPE, size_t NUM_ROWS, size_t NUM_COLS>
+    matrix<TYPE, NUM_ROWS, NUM_COLS> operator-(const matrix<TYPE, NUM_ROWS, NUM_COLS>& m1, const matrix<TYPE, NUM_ROWS, NUM_COLS>& m2) {
+        matrix<TYPE, NUM_ROWS, NUM_COLS> tmp(m1);
+        tmp -= m2;
+        return tmp;
+    }
+
+    template<class TYPE1, class TYPE2, size_t NUM_ROWS, size_t NUM_COLS>
+    matrix<TYPE1, NUM_ROWS, NUM_COLS> operator*(const matrix<TYPE1, NUM_ROWS, NUM_COLS>& m, const TYPE2& p) {
+        matrix<TYPE1, NUM_ROWS, NUM_COLS> tmp;
+        size_t i, j;
+        for (i = 0; i != NUM_ROWS; ++i) {
+            for (j = 0; j != NUM_COLS; ++j) {
+                tmp[i][j] = m[i][j] * p;
+            }
+        }
+        return tmp;
+    }
+
+    template<class TYPE1, class TYPE2, size_t NUM_ROWS, size_t NUM_COLS>
+    matrix<TYPE1, NUM_ROWS, NUM_COLS> operator*(const TYPE2& p, const matrix<TYPE1, NUM_ROWS, NUM_COLS>& m) {
+        matrix<TYPE1, NUM_ROWS, NUM_COLS> tmp;
+        size_t i, j;
+        for (i = 0; i != NUM_ROWS; ++i) {
+            for (j = 0; j != NUM_COLS; ++j) {
+                tmp[i][j] = p * m[i][j];
+            }
+        }
+        return tmp;
     }
 }
 #endif	/* MATRIX_H */
