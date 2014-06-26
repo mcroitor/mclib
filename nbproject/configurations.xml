@@ -4,11 +4,13 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <logicalFolder name="f1" displayName="geometry" projectFiles="true">
+        <itemPath>geometry/point.h</itemPath>
+        <itemPath>geometry/vector.h</itemPath>
+      </logicalFolder>
       <itemPath>array.h</itemPath>
       <itemPath>defines.h</itemPath>
       <itemPath>matrix.h</itemPath>
-      <itemPath>geometry/point.h</itemPath>
-      <itemPath>geometry/vector.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"

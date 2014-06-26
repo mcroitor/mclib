@@ -33,6 +33,11 @@ namespace mc {
     TYPE abs(const TYPE& p) {
         return (p > 0) ? p : -p;
     }
+    
+    template<class COMPARABLE_TYPE>
+    bool operator != (const COMPARABLE_TYPE& p1, const COMPARABLE_TYPE& p2){
+        return !(p1 == p2);
+    }
 
     bool dbl_compare(const double&, const double&);
 
