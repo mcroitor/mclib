@@ -20,7 +20,16 @@ void test1() {
 
 void test2() {
     std::cout << "matrix test 2" << std::endl;
-    mc::matrix<int,5,2> m;
+    mc::matrix<int,3,2> m;
+    m[0][0] = 1;
+    m[0][1] = 5;
+    m[1][0] = 2;
+    m[2][1] = 2;
+    
+    std::cout << m;
+    
+    m.swap_cols(0, 1);
+    std::cout << "swap columns 0 & 1:" << std::endl;
     std::cout << m;
 }
 

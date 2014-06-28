@@ -22,6 +22,9 @@ void test1() {
 void test2(){
     mc::array<int, 10> a;
     std::cout << a;
+    int tmp[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+    a = mc::array<int, 10>(tmp, 10);
+    std::cout << a;
 }
 
 //void test2() {
