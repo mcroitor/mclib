@@ -1,9 +1,11 @@
 #ifndef MC_ARRAY_H
 #define	MC_ARRAY_H
 #include "defines.h"
+#include <iostream>
+
 namespace mc {
 
-/**
+    /**
      * This class represents an array with static numbre of elements.
      * It is compatible with STL (in a most parts).
      */
@@ -20,6 +22,10 @@ namespace mc {
         typedef const TYPE* const_iterator;
 
         array() {
+            size_t i;
+            for (i = 0; i != SIZE; ++i) {
+                el[i] = TYPE();
+            }
         }
 
         array(TYPE* p, size_t s) {
@@ -39,18 +45,20 @@ namespace mc {
         ~array() {
         }
 
-        array<TYPE, SIZE> operator =(const array<TYPE, SIZE>& a) {
+        array<TYPE, SIZE> operator=(const array<TYPE, SIZE>& a) {
             size_t i;
             for (i = 0; i != SIZE; ++i) {
                 el[i] = a.el[i];
             }
             return *this;
         }
-        TYPE& operator [](const size_t& i) {
+
+        TYPE& operator[](const size_t& i) {
             if (i > SIZE) throw BOUND_ERROR;
             return el[i];
         }
-        const TYPE& operator [](const size_t& i) const{
+
+        const TYPE& operator[](const size_t& i) const {
             if (i > SIZE) throw BOUND_ERROR;
             return el[i];
         }
@@ -71,7 +79,7 @@ namespace mc {
             return el + SIZE;
         }
 
-        bool operator ==(const array<TYPE, SIZE>& a) {
+        bool operator==(const array<TYPE, SIZE>& a) {
             size_t i;
             for (i = 0; i != SIZE; ++i) {
                 if (el[i] != a.el[i]) return false;
@@ -97,6 +105,15 @@ namespace mc {
             *this = tmp;
         }
     };
+
+    template<class TYPE, size_t SIZE>
+    std::ostream& operator<<(std::ostream& out, const array<TYPE, SIZE>& a) {
+        size_t i;
+        for (i = 0; i != SIZE; ++i) {
+            out << a[i] << " ";
+        }
+        return out;
+    }
 }
 
 #endif	/* ARRAY_H */

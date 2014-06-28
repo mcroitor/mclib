@@ -2,7 +2,7 @@
 #define	MATRIX_H
 
 #include "array.h"
-
+#include <iostream>
 
 /**
  * an implementation of linnear algebra it provides.
@@ -18,6 +18,12 @@ namespace mc {
     public:
 
         matrix() {
+            size_t i, j;
+            for(i = 0; i != NUM_ROWS; ++i){
+                for(j = 0; j != NUM_COLS; ++j){
+                    elements[i][j] = TYPE();
+                }
+            }
         }
 
         ROW_TYPE& operator[](const size_t& index) {
@@ -53,6 +59,21 @@ namespace mc {
                     elements[i][j] -= m.elements[i][j];
                 }
             }
+        }
+        
+        void swap_cols(size_t i, size_t j){
+            size_t k;
+            TYPE aux;
+            for(k = 0; k != NUM_ROWS; ++k){
+                aux = elements[k][i];
+                elements[k][i] = elements[k][j];
+                elements[k][j] = aux;
+            }
+        }
+        void swap_rows(size_t i, size_t j){
+            ROW_TYPE aux = elements[i];
+            elements[i] = elements[j];
+            elements[j] = aux;
         }
     };
 
@@ -104,6 +125,15 @@ namespace mc {
             }
         }
         return tmp;
+    }
+    
+    template<class TYPE, size_t NUM_ROWS, size_t NUM_COLS>
+    std::ostream& operator << (std::ostream& out, const matrix<TYPE, NUM_ROWS, NUM_COLS>& m){
+        size_t i, j;
+        for(i = 0; i != NUM_ROWS; ++i){
+            out << m[i] << "\n";
+        }
+        return out;
     }
 }
 #endif	/* MATRIX_H */

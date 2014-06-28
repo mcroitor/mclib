@@ -20,6 +20,12 @@ void test1() {
 
 void test2() {
     std::cout << "matrix test 2" << std::endl;
+    mc::matrix<int,5,2> m;
+    std::cout << m;
+}
+
+void test3(){
+    std::cout << "matrix test 3" << std::endl;
     mc::matrix<int,5,2> m1;
     mc::matrix<int,2,5> m2;
     try{
@@ -28,7 +34,7 @@ void test2() {
     }
     catch(std::exception ex){
         std::cout << "%TEST_FAILED% time=0 testname=test2 (matrix) message=error transponation" << std::endl;
-    }
+    }    
 }
 
 int main(int argc, char** argv) {
@@ -43,6 +49,10 @@ int main(int argc, char** argv) {
     test2();
     std::cout << "%TEST_FINISHED% time=0 test2 (matrix)" << std::endl;
 
+    std::cout << "%TEST_STARTED% test2 (matrix)\n" << std::endl;
+    test3();
+    std::cout << "%TEST_FINISHED% time=0 test2 (matrix)" << std::endl;
+    
     std::cout << "%SUITE_FINISHED% time=0" << std::endl;
 
     return (EXIT_SUCCESS);
