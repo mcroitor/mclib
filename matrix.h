@@ -19,8 +19,8 @@ namespace mc {
 
         matrix() {
             size_t i, j;
-            for(i = 0; i != NUM_ROWS; ++i){
-                for(j = 0; j != NUM_COLS; ++j){
+            for (i = 0; i != NUM_ROWS; ++i) {
+                for (j = 0; j != NUM_COLS; ++j) {
                     elements[i][j] = TYPE();
                 }
             }
@@ -60,17 +60,18 @@ namespace mc {
                 }
             }
         }
-        
-        void swap_cols(size_t i, size_t j){
+
+        void swap_cols(size_t i, size_t j) {
             size_t k;
             TYPE aux;
-            for(k = 0; k != NUM_ROWS; ++k){
+            for (k = 0; k != NUM_ROWS; ++k) {
                 aux = elements[k][i];
                 elements[k][i] = elements[k][j];
                 elements[k][j] = aux;
             }
         }
-        void swap_rows(size_t i, size_t j){
+
+        void swap_rows(size_t i, size_t j) {
             ROW_TYPE aux = elements[i];
             elements[i] = elements[j];
             elements[j] = aux;
@@ -103,34 +104,49 @@ namespace mc {
         return tmp;
     }
 
-    template<class TYPE1, class TYPE2, size_t NUM_ROWS, size_t NUM_COLS>
-    matrix<TYPE1, NUM_ROWS, NUM_COLS> operator*(const matrix<TYPE1, NUM_ROWS, NUM_COLS>& m, const TYPE2& p) {
-        matrix<TYPE1, NUM_ROWS, NUM_COLS> tmp;
-        size_t i, j;
-        for (i = 0; i != NUM_ROWS; ++i) {
-            for (j = 0; j != NUM_COLS; ++j) {
-                tmp[i][j] = m[i][j] * p;
+    template<class TYPE, size_t NUM_ROWS1, size_t NUM_COLS1, size_t NUM_ROWS2, size_t NUM_COLS2>
+    matrix<TYPE, NUM_ROWS1, NUM_COLS2> operator*(const matrix<TYPE, NUM_ROWS1, NUM_COLS1>& m1, const matrix<TYPE, NUM_ROWS2, NUM_COLS2>& m2) {
+        matrix<TYPE, NUM_ROWS1, NUM_COLS2> tmp;
+        size_t i, j, k;
+        if (NUM_COLS1 != NUM_ROWS2) throw MULT_MATRIX_ERROR;
+        for (i = 0; i != NUM_ROWS1; ++i) {
+            for (j = 0; j != NUM_COLS2; ++j) {
+                for (k = 0; k != NUM_COLS1; ++k) {
+                    tmp[i][j] += m1[i][k] * m2[k][j];
+                }
             }
         }
         return tmp;
     }
 
-    template<class TYPE1, class TYPE2, size_t NUM_ROWS, size_t NUM_COLS>
-    matrix<TYPE1, NUM_ROWS, NUM_COLS> operator*(const TYPE2& p, const matrix<TYPE1, NUM_ROWS, NUM_COLS>& m) {
-        matrix<TYPE1, NUM_ROWS, NUM_COLS> tmp;
+//    template<class TYPE1, class TYPE2, size_t NUM_ROWS, size_t NUM_COLS>
+//    matrix<TYPE1, NUM_ROWS, NUM_COLS> operator*(const matrix<TYPE1, NUM_ROWS, NUM_COLS>& m, const TYPE2& p) {
+//        matrix<TYPE1, NUM_ROWS, NUM_COLS> tmp;
+//        size_t i, j;
+//        for (i = 0; i != NUM_ROWS; ++i) {
+//            for (j = 0; j != NUM_COLS; ++j) {
+//                tmp[i][j] = m[i][j] * p;
+//            }
+//        }
+//        return tmp;
+//    }
+
+//    template<class TYPE1, class TYPE2, size_t NUM_ROWS, size_t NUM_COLS>
+//    matrix<TYPE1, NUM_ROWS, NUM_COLS> operator*(const TYPE2& p, const matrix<TYPE1, NUM_ROWS, NUM_COLS>& m) {
+//        matrix<TYPE1, NUM_ROWS, NUM_COLS> tmp;
+//        size_t i, j;
+//        for (i = 0; i != NUM_ROWS; ++i) {
+//            for (j = 0; j != NUM_COLS; ++j) {
+//                tmp[i][j] = p * m[i][j];
+//            }
+//        }
+//        return tmp;
+//    }
+
+    template<class TYPE, size_t NUM_ROWS, size_t NUM_COLS>
+    std::ostream& operator<<(std::ostream& out, const matrix<TYPE, NUM_ROWS, NUM_COLS>& m) {
         size_t i, j;
         for (i = 0; i != NUM_ROWS; ++i) {
-            for (j = 0; j != NUM_COLS; ++j) {
-                tmp[i][j] = p * m[i][j];
-            }
-        }
-        return tmp;
-    }
-    
-    template<class TYPE, size_t NUM_ROWS, size_t NUM_COLS>
-    std::ostream& operator << (std::ostream& out, const matrix<TYPE, NUM_ROWS, NUM_COLS>& m){
-        size_t i, j;
-        for(i = 0; i != NUM_ROWS; ++i){
             out << m[i] << "\n";
         }
         return out;
