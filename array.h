@@ -8,6 +8,7 @@ namespace mc {
     /**
      * This class represents an array with static numbre of elements.
      * It is compatible with STL (in a most parts).
+     * standard C++11 contains this class
      */
     template <typename TYPE, size_t SIZE>
     class array {
@@ -19,6 +20,49 @@ namespace mc {
         typedef TYPE* pointer;
         typedef const TYPE* const_pointer;
         typedef TYPE* iterator;
+
+//        struct iterator{
+//            TYPE* value;
+//            typedef TYPE value_type;
+//
+//            iterator() : value(0) {
+//            }
+//
+//            iterator(const iterator& i) : value(i.value) {
+//            }
+//
+//            iterator operator=(const iterator& i) {
+//                value = i.value;
+//                return *this;
+//            }
+//
+//            TYPE& operator*() {
+//                return *value;
+//            }
+//
+//            iterator operator++() {
+//                ++value;
+//                return *this;
+//            }
+//
+//            iterator operator++(TYPE) {
+//                iterator tmp(*this);
+//                ++value;
+//                return tmp;
+//            }
+//
+//            iterator operator--() {
+//                --value;
+//                return *this;
+//            }
+//
+//            iterator operator--(TYPE) {
+//                iterator tmp(*this);
+//                --value;
+//                return tmp;
+//            }
+//        };
+
         typedef const TYPE* const_iterator;
 
         array() {

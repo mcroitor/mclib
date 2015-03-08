@@ -10,6 +10,7 @@
       </logicalFolder>
       <itemPath>array.h</itemPath>
       <itemPath>defines.h</itemPath>
+      <itemPath>extalg.h</itemPath>
       <itemPath>matrix.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -30,6 +31,12 @@
                      projectFiles="true"
                      kind="TEST">
         <itemPath>tests/newsimpletest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f3"
+                     displayName="extalg Test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/newsimpletest2.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f2"
                      displayName="matrix test"
@@ -63,6 +70,8 @@
       </item>
       <item path="defines.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="extalg.h" ex="false" tool="3" flavor2="0">
+      </item>
       <folder path="TestFiles/f1">
         <cTool>
           <incDir>
@@ -93,6 +102,21 @@
           <output>${TESTDIR}/TestFiles/f2</output>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f3">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+        </linkerTool>
+      </folder>
       <item path="geometry/point.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="geometry/vector.h" ex="false" tool="3" flavor2="0">
@@ -102,6 +126,8 @@
       <item path="tests/newsimpletest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/newsimpletest1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/newsimpletest2.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="3">
@@ -132,6 +158,8 @@
       </item>
       <item path="defines.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="extalg.h" ex="false" tool="3" flavor2="0">
+      </item>
       <folder path="TestFiles/f1">
         <cTool>
           <incDir>
@@ -162,6 +190,21 @@
           <output>${TESTDIR}/TestFiles/f2</output>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f3">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+        </linkerTool>
+      </folder>
       <item path="geometry/point.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="geometry/vector.h" ex="false" tool="3" flavor2="0">
@@ -171,6 +214,8 @@
       <item path="tests/newsimpletest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/newsimpletest1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/newsimpletest2.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>
