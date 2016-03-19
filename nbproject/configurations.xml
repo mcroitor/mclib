@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="94">
+<configurationDescriptor version="97">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="geometry" projectFiles="true">
+        <itemPath>geometry/cut.h</itemPath>
+        <itemPath>geometry/line.h</itemPath>
         <itemPath>geometry/point.h</itemPath>
         <itemPath>geometry/vector.h</itemPath>
       </logicalFolder>
       <itemPath>array.h</itemPath>
+      <itemPath>biginteger.h</itemPath>
+      <itemPath>complex.h</itemPath>
       <itemPath>defines.h</itemPath>
       <itemPath>extalg.h</itemPath>
       <itemPath>matrix.h</itemPath>
+      <itemPath>mcxml.h</itemPath>
+      <itemPath>permutation.h</itemPath>
+      <itemPath>polynomial.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -20,7 +27,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>biginteger.cpp</itemPath>
+      <itemPath>complex.cpp</itemPath>
       <itemPath>defines.cpp</itemPath>
+      <itemPath>mcxml.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -66,6 +76,14 @@
       </compileType>
       <item path="array.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="biginteger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="biginteger.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="complex.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="complex.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="defines.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="defines.h" ex="false" tool="3" flavor2="0">
@@ -117,11 +135,23 @@
           <output>${TESTDIR}/TestFiles/f3</output>
         </linkerTool>
       </folder>
+      <item path="geometry/cut.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="geometry/line.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="geometry/point.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="geometry/vector.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="matrix.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="mcxml.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mcxml.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="permutation.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="polynomial.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/newsimpletest.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -154,6 +184,14 @@
       </compileType>
       <item path="array.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="biginteger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="biginteger.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="complex.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="complex.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="defines.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="defines.h" ex="false" tool="3" flavor2="0">
@@ -205,11 +243,23 @@
           <output>${TESTDIR}/TestFiles/f3</output>
         </linkerTool>
       </folder>
+      <item path="geometry/cut.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="geometry/line.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="geometry/point.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="geometry/vector.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="matrix.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="mcxml.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mcxml.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="permutation.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="polynomial.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/newsimpletest.cpp" ex="false" tool="1" flavor2="0">
       </item>

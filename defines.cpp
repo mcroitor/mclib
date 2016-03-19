@@ -16,9 +16,9 @@ namespace mc {
         return x;
     }
 
-    bool isPrimary(const uint64& p) {
-        uint64 divisor = 2;
-        uint64 top = (uint64) sqrt(p);
+    bool isPrimary(const uint64_t& p) {
+        uint64_t divisor = 2;
+        uint64_t top = (uint64_t) sqrt(p);
 
         for (; divisor <= top; ++divisor) {
             if (p % divisor == 0) {
@@ -94,9 +94,9 @@ namespace mc {
         return c >= '0' && c <= '9';
     }
 
-    std::string ToString(int64 p, size_t d) {
+    std::string ToString(int64_t p, size_t d) {
         std::string result(""), tmp("0");
-        uint64 condition = d * p;
+        uint64_t condition = d * p;
 
         do {
             tmp[0] = p % 10 + '0';

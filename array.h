@@ -21,48 +21,6 @@ namespace mc {
         typedef const TYPE* const_pointer;
         typedef TYPE* iterator;
 
-//        struct iterator{
-//            TYPE* value;
-//            typedef TYPE value_type;
-//
-//            iterator() : value(0) {
-//            }
-//
-//            iterator(const iterator& i) : value(i.value) {
-//            }
-//
-//            iterator operator=(const iterator& i) {
-//                value = i.value;
-//                return *this;
-//            }
-//
-//            TYPE& operator*() {
-//                return *value;
-//            }
-//
-//            iterator operator++() {
-//                ++value;
-//                return *this;
-//            }
-//
-//            iterator operator++(TYPE) {
-//                iterator tmp(*this);
-//                ++value;
-//                return tmp;
-//            }
-//
-//            iterator operator--() {
-//                --value;
-//                return *this;
-//            }
-//
-//            iterator operator--(TYPE) {
-//                iterator tmp(*this);
-//                --value;
-//                return tmp;
-//            }
-//        };
-
         typedef const TYPE* const_iterator;
 
         array() {

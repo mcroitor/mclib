@@ -1,26 +1,16 @@
 #ifndef MC_DEFINES_H
 #define	MC_DEFINES_H
 #include <string>
+#include <stdint.h>
 /**
  * some usefull constants
  */
 
 namespace mc {
 
-#ifndef UINT_TYPE
-#define UINT_TYPE
-    typedef unsigned int uint;
-    typedef unsigned char uint8;
-    typedef uint8 byte;
-    typedef unsigned short int uint16;
-    /***
-     * uint32 is missing
-     */
-    typedef unsigned long long uint64;
+    typedef uint8_t byte;
 
-    typedef long long int64;
-#endif
-    const uint MAX_ITERATIONS = 1000;
+    const uint32_t MAX_ITERATIONS = 1000;
     const double EPS = 0.000001;
     const double PI = 3.14159265358979;
     const double E = 2.718281828459;
@@ -81,7 +71,7 @@ namespace mc {
      * @param num_chars - количество символов в строке. 
      * @return в случае, если символов больше цифр в числе, то результат получается с лидирующими нулями.
      */
-    std::string ToString(int64, size_t = 0);
+    std::string ToString(int64_t, size_t = 0);
 }
 #endif	/* DEFINES_H */
 
