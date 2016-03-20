@@ -47,13 +47,15 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 TESTFILES= \
 	${TESTDIR}/TestFiles/f1 \
 	${TESTDIR}/TestFiles/f3 \
-	${TESTDIR}/TestFiles/f2
+	${TESTDIR}/TestFiles/f2 \
+	${TESTDIR}/TestFiles/f4
 
 # Test Object Files
 TESTOBJECTFILES= \
+	${TESTDIR}/tests/extalg_test.o \
 	${TESTDIR}/tests/newsimpletest.o \
 	${TESTDIR}/tests/newsimpletest1.o \
-	${TESTDIR}/tests/newsimpletest2.o
+	${TESTDIR}/tests/polynomial_test.o
 
 # C Compiler Flags
 CFLAGS=
@@ -84,22 +86,22 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libmclib.a: ${OBJECTFILES}
 ${OBJECTDIR}/biginteger.o: biginteger.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/biginteger.o biginteger.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/biginteger.o biginteger.cpp
 
 ${OBJECTDIR}/complex.o: complex.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/complex.o complex.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/complex.o complex.cpp
 
 ${OBJECTDIR}/defines.o: defines.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/defines.o defines.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/defines.o defines.cpp
 
 ${OBJECTDIR}/mcxml.o: mcxml.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mcxml.o mcxml.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mcxml.o mcxml.cpp
 
 # Subprojects
 .build-subprojects:
@@ -112,7 +114,7 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/newsimpletest.o ${OBJECTFILES:%.o=%_no
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} 
 
-${TESTDIR}/TestFiles/f3: ${TESTDIR}/tests/newsimpletest2.o ${OBJECTFILES:%.o=%_nomain.o}
+${TESTDIR}/TestFiles/f3: ${TESTDIR}/tests/extalg_test.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f3 $^ ${LDLIBSOPTIONS} 
 
@@ -120,23 +122,33 @@ ${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/newsimpletest1.o ${OBJECTFILES:%.o=%_n
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS} 
 
+${TESTDIR}/TestFiles/f4: ${TESTDIR}/tests/polynomial_test.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f4 $^ ${LDLIBSOPTIONS} 
+
 
 ${TESTDIR}/tests/newsimpletest.o: tests/newsimpletest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/newsimpletest.o tests/newsimpletest.cpp
+	$(COMPILE.cc) -g -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/newsimpletest.o tests/newsimpletest.cpp
 
 
-${TESTDIR}/tests/newsimpletest2.o: tests/newsimpletest2.cpp 
+${TESTDIR}/tests/extalg_test.o: tests/extalg_test.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/newsimpletest2.o tests/newsimpletest2.cpp
+	$(COMPILE.cc) -g -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/extalg_test.o tests/extalg_test.cpp
 
 
 ${TESTDIR}/tests/newsimpletest1.o: tests/newsimpletest1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/newsimpletest1.o tests/newsimpletest1.cpp
+	$(COMPILE.cc) -g -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/newsimpletest1.o tests/newsimpletest1.cpp
+
+
+${TESTDIR}/tests/polynomial_test.o: tests/polynomial_test.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/polynomial_test.o tests/polynomial_test.cpp
 
 
 ${OBJECTDIR}/biginteger_nomain.o: ${OBJECTDIR}/biginteger.o biginteger.cpp 
@@ -147,7 +159,7 @@ ${OBJECTDIR}/biginteger_nomain.o: ${OBJECTDIR}/biginteger.o biginteger.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/biginteger_nomain.o biginteger.cpp;\
+	    $(COMPILE.cc) -g -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/biginteger_nomain.o biginteger.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/biginteger.o ${OBJECTDIR}/biginteger_nomain.o;\
 	fi
@@ -160,7 +172,7 @@ ${OBJECTDIR}/complex_nomain.o: ${OBJECTDIR}/complex.o complex.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/complex_nomain.o complex.cpp;\
+	    $(COMPILE.cc) -g -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/complex_nomain.o complex.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/complex.o ${OBJECTDIR}/complex_nomain.o;\
 	fi
@@ -173,7 +185,7 @@ ${OBJECTDIR}/defines_nomain.o: ${OBJECTDIR}/defines.o defines.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/defines_nomain.o defines.cpp;\
+	    $(COMPILE.cc) -g -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/defines_nomain.o defines.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/defines.o ${OBJECTDIR}/defines_nomain.o;\
 	fi
@@ -186,7 +198,7 @@ ${OBJECTDIR}/mcxml_nomain.o: ${OBJECTDIR}/mcxml.o mcxml.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mcxml_nomain.o mcxml.cpp;\
+	    $(COMPILE.cc) -g -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mcxml_nomain.o mcxml.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/mcxml.o ${OBJECTDIR}/mcxml_nomain.o;\
 	fi
@@ -198,6 +210,7 @@ ${OBJECTDIR}/mcxml_nomain.o: ${OBJECTDIR}/mcxml.o mcxml.cpp
 	    ${TESTDIR}/TestFiles/f1 || true; \
 	    ${TESTDIR}/TestFiles/f3 || true; \
 	    ${TESTDIR}/TestFiles/f2 || true; \
+	    ${TESTDIR}/TestFiles/f4 || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi

@@ -48,7 +48,7 @@ namespace mc {
     template<class iterator>
     void bubble_sort(iterator first, iterator last) {
         iterator i, j;
-        iterator::value_type tmp;
+        typename iterator::value_type tmp;
         for (i = first; i != last - 1; ++i) {
             for (j = i + 1; j != last; ++j) {
                 if (*i > *j) {

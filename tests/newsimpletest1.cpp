@@ -13,7 +13,7 @@
  * Simple C++ Test Suite
  */
 
-void test1() {
+void creation_matrix_test() {
     std::cout << "matrix test 1" << std::endl;
     mc::matrix<int, 3, 4> m;
 }
@@ -86,7 +86,7 @@ int main(int argc, char** argv) {
     std::cout << "%SUITE_STARTED%" << std::endl;
 
     std::cout << "%TEST_STARTED% test1 (matrix)" << std::endl;
-    test1();
+    creation_matrix_test();
     std::cout << "%TEST_FINISHED% time=0 test1 (matrix)" << std::endl;
 
     std::cout << "%TEST_STARTED% test2 (matrix)\n" << std::endl;

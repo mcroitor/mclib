@@ -17,7 +17,9 @@ namespace mc {
         polynomial(TYPE, size_t); // monomial
         polynomial(const polynomial<TYPE>&);
         polynomial(std::deque<TYPE>);
+#if __cplusplus >= 201103L
         polynomial(std::initializer_list<TYPE>);
+#endif
 
         // add additional monomials with coeff 0
         void extend(size_t);
@@ -28,10 +30,12 @@ namespace mc {
         void operator+=(const polynomial<TYPE>&);
         void operator-=(const polynomial<TYPE>&);
         void operator*=(const polynomial<TYPE>&);
-        void operator/=(const polynomial<TYPE>&); // not implemented
+        void operator/=(const polynomial<TYPE>&);
         TYPE operator[](const size_t);
         const TYPE operator[](const size_t) const;
         TYPE operator()(const TYPE) const;
+
+        bool equal(const polynomial<TYPE>&) const;
 
         const size_t degree() const;
     };
@@ -46,6 +50,8 @@ namespace mc {
     polynomial<TYPE> operator/(const polynomial<TYPE>&, const polynomial<TYPE>&);
     template<class TYPE>
     polynomial<TYPE> operator%(const polynomial<TYPE>&, const polynomial<TYPE>&);
+    template<class TYPE>
+    bool operator==(const polynomial<TYPE>&, const polynomial<TYPE>&);
 
     template<class TYPE>
     std::istream& operator>>(std::istream&, polynomial<TYPE>&);
@@ -73,10 +79,12 @@ namespace mc {
         coefficients.push_back(value);
     }
 
+#if __cplusplus >= 201103L
     template<class TYPE>
     polynomial<TYPE>::polynomial(std::initializer_list<TYPE> p) {
         coefficients.insert(coefficients.end(), p.begin(), p.end());
     }
+#endif
 
     template<class TYPE>
     polynomial<TYPE>::polynomial(std::deque<TYPE> p) {
@@ -181,6 +189,29 @@ namespace mc {
     }
 
     template<class TYPE>
+    bool polynomial<TYPE>::equal(const polynomial<TYPE>& p) const {
+        // we can compare only normalized polynomials
+        //polynomial<TYPE> tmp = p;
+        //tmp.normalize();
+        //normalize();
+        if (p.degree() != degree()) {
+            return false;
+        }
+        TYPE top1 = coefficients.back(),
+                top2 = p.coefficients.back();
+        typename std::deque<TYPE>::const_iterator i = coefficients.begin(),
+                j = p.coefficients.begin();
+        while (i != coefficients.end()) {
+            if (*i * top2 != *j * top1) {
+                return false;
+            }
+            ++i;
+            ++j;
+        }
+        return true;
+    }
+
+    template<class TYPE>
     const size_t polynomial<TYPE>::degree() const {
         return coefficients.size() - 1;
     }
@@ -218,6 +249,11 @@ namespace mc {
         polynomial<TYPE> tmp = p1 / p2;
         tmp *= p2;
         return p1 - tmp;
+    }
+
+    template<class TYPE>
+    bool operator==(const polynomial<TYPE>& p1, const polynomial<TYPE>& p2) {
+        return p1.equal(p2);
     }
 
     template<class TYPE>

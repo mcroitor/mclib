@@ -66,16 +66,12 @@ namespace mc {
         if(digits.size() > tmp.size()){
             tmp.insert(tmp.begin(), digits.size() - tmp.size(), '0');
         }
- //       std::cout << "debug >> " << digits << "\n----- >> " << tmp << std::endl;
         for(ri = digits.rbegin(), rti = tmp.rbegin(); 
                 ri != digits.rend(); ++ri, ++rti){
             aux = *ri - *rti - res;
- //           std::cout << aux;
             *ri = (aux + 10) % 10 + '0' ;
             res = (aux >= 0) ? 0 : 1;
         }
- //       std::cout << std::endl;
- //       std::cout << "debug >> " << digits << std::endl;
     }
     void BigInteger::operator *=(const BigInteger& p){}
     void BigInteger::operator /=(const BigInteger& p){}

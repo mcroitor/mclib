@@ -13,13 +13,13 @@
  * Simple C++ Test Suite
  */
 
-void test1() {
+void creation_array_test() {
     std::cout << "array test test 1" << std::endl;
     mc::array<int, 8> a; 
     
 }
 
-void test2(){
+void printing_array_test(){
     mc::array<int, 10> a;
     std::cout << a;
     int tmp[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
@@ -37,11 +37,11 @@ int main(int argc, char** argv) {
     std::cout << "%SUITE_STARTED%" << std::endl;
 
     std::cout << "%TEST_STARTED% test1 (array test)" << std::endl;
-    test1();
+    creation_array_test();
     std::cout << "%TEST_FINISHED% time=0 test1 (array test)" << std::endl;
 
     std::cout << "%TEST_STARTED% test2 (array test)\n" << std::endl;
-    test2();
+    printing_array_test();
     std::cout << "%TEST_FINISHED% time=0 test2 (array test)" << std::endl;
 
     std::cout << "%SUITE_FINISHED% time=0" << std::endl;

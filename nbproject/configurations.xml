@@ -46,13 +46,19 @@
                      displayName="extalg Test"
                      projectFiles="true"
                      kind="TEST">
-        <itemPath>tests/newsimpletest2.cpp</itemPath>
+        <itemPath>tests/extalg_test.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f2"
                      displayName="matrix test"
                      projectFiles="true"
                      kind="TEST">
         <itemPath>tests/newsimpletest1.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f4"
+                     displayName="polynomial test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/polynomial_test.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -71,6 +77,9 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <standard>8</standard>
+        </ccTool>
         <archiverTool>
         </archiverTool>
       </compileType>
@@ -135,6 +144,21 @@
           <output>${TESTDIR}/TestFiles/f3</output>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f4">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f4</output>
+        </linkerTool>
+      </folder>
       <item path="geometry/cut.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="geometry/line.h" ex="false" tool="3" flavor2="0">
@@ -153,11 +177,13 @@
       </item>
       <item path="polynomial.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="tests/extalg_test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="tests/newsimpletest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/newsimpletest1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/newsimpletest2.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/polynomial_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="3">
@@ -243,6 +269,21 @@
           <output>${TESTDIR}/TestFiles/f3</output>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f4">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f4</output>
+        </linkerTool>
+      </folder>
       <item path="geometry/cut.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="geometry/line.h" ex="false" tool="3" flavor2="0">
@@ -261,11 +302,13 @@
       </item>
       <item path="polynomial.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="tests/extalg_test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="tests/newsimpletest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/newsimpletest1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/newsimpletest2.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/polynomial_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>
