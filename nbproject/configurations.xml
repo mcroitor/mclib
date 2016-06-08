@@ -19,6 +19,7 @@
       <itemPath>mcxml.h</itemPath>
       <itemPath>permutation.h</itemPath>
       <itemPath>polynomial.h</itemPath>
+      <itemPath>strmanip.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -31,6 +32,7 @@
       <itemPath>complex.cpp</itemPath>
       <itemPath>defines.cpp</itemPath>
       <itemPath>mcxml.cpp</itemPath>
+      <itemPath>strmanip.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -59,6 +61,9 @@
                      projectFiles="true"
                      kind="TEST">
         <itemPath>tests/polynomial_test.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5" displayName="strmanip" projectFiles="true" kind="TEST">
+        <itemPath>tests/newsimpletest2.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -159,6 +164,21 @@
           <output>${TESTDIR}/TestFiles/f4</output>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f5">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
+        </linkerTool>
+      </folder>
       <item path="geometry/cut.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="geometry/line.h" ex="false" tool="3" flavor2="0">
@@ -177,11 +197,17 @@
       </item>
       <item path="polynomial.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="strmanip.cpp" ex="false" tool="1" flavor2="8">
+      </item>
+      <item path="strmanip.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="tests/extalg_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/newsimpletest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/newsimpletest1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/newsimpletest2.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/polynomial_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -284,6 +310,21 @@
           <output>${TESTDIR}/TestFiles/f4</output>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f5">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
+        </linkerTool>
+      </folder>
       <item path="geometry/cut.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="geometry/line.h" ex="false" tool="3" flavor2="0">
@@ -302,11 +343,17 @@
       </item>
       <item path="polynomial.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="strmanip.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="strmanip.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="tests/extalg_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/newsimpletest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/newsimpletest1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/newsimpletest2.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/polynomial_test.cpp" ex="false" tool="1" flavor2="0">
       </item>

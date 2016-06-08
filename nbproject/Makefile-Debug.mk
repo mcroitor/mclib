@@ -38,7 +38,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/biginteger.o \
 	${OBJECTDIR}/complex.o \
 	${OBJECTDIR}/defines.o \
-	${OBJECTDIR}/mcxml.o
+	${OBJECTDIR}/mcxml.o \
+	${OBJECTDIR}/strmanip.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -48,13 +49,15 @@ TESTFILES= \
 	${TESTDIR}/TestFiles/f1 \
 	${TESTDIR}/TestFiles/f3 \
 	${TESTDIR}/TestFiles/f2 \
-	${TESTDIR}/TestFiles/f4
+	${TESTDIR}/TestFiles/f4 \
+	${TESTDIR}/TestFiles/f5
 
 # Test Object Files
 TESTOBJECTFILES= \
 	${TESTDIR}/tests/extalg_test.o \
 	${TESTDIR}/tests/newsimpletest.o \
 	${TESTDIR}/tests/newsimpletest1.o \
+	${TESTDIR}/tests/newsimpletest2.o \
 	${TESTDIR}/tests/polynomial_test.o
 
 # C Compiler Flags
@@ -103,6 +106,11 @@ ${OBJECTDIR}/mcxml.o: mcxml.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mcxml.o mcxml.cpp
 
+${OBJECTDIR}/strmanip.o: strmanip.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/strmanip.o strmanip.cpp
+
 # Subprojects
 .build-subprojects:
 
@@ -125,6 +133,10 @@ ${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/newsimpletest1.o ${OBJECTFILES:%.o=%_n
 ${TESTDIR}/TestFiles/f4: ${TESTDIR}/tests/polynomial_test.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f4 $^ ${LDLIBSOPTIONS} 
+
+${TESTDIR}/TestFiles/f5: ${TESTDIR}/tests/newsimpletest2.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f5 $^ ${LDLIBSOPTIONS} 
 
 
 ${TESTDIR}/tests/newsimpletest.o: tests/newsimpletest.cpp 
@@ -149,6 +161,12 @@ ${TESTDIR}/tests/polynomial_test.o: tests/polynomial_test.cpp
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/polynomial_test.o tests/polynomial_test.cpp
+
+
+${TESTDIR}/tests/newsimpletest2.o: tests/newsimpletest2.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/newsimpletest2.o tests/newsimpletest2.cpp
 
 
 ${OBJECTDIR}/biginteger_nomain.o: ${OBJECTDIR}/biginteger.o biginteger.cpp 
@@ -203,6 +221,19 @@ ${OBJECTDIR}/mcxml_nomain.o: ${OBJECTDIR}/mcxml.o mcxml.cpp
 	    ${CP} ${OBJECTDIR}/mcxml.o ${OBJECTDIR}/mcxml_nomain.o;\
 	fi
 
+${OBJECTDIR}/strmanip_nomain.o: ${OBJECTDIR}/strmanip.o strmanip.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/strmanip.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/strmanip_nomain.o strmanip.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/strmanip.o ${OBJECTDIR}/strmanip_nomain.o;\
+	fi
+
 # Run Test Targets
 .test-conf:
 	@if [ "${TEST}" = "" ]; \
@@ -211,6 +242,7 @@ ${OBJECTDIR}/mcxml_nomain.o: ${OBJECTDIR}/mcxml.o mcxml.cpp
 	    ${TESTDIR}/TestFiles/f3 || true; \
 	    ${TESTDIR}/TestFiles/f2 || true; \
 	    ${TESTDIR}/TestFiles/f4 || true; \
+	    ${TESTDIR}/TestFiles/f5 || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi

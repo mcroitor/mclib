@@ -72,6 +72,9 @@ namespace mc {
      * @return в случае, если символов больше цифр в числе, то результат получается с лидирующими нулями.
      */
     std::string ToString(int64_t, size_t = 0);
+    
+    double min(double, double);
+    double min(double, double, double);
 }
 #endif	/* DEFINES_H */
 

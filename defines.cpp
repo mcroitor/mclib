@@ -108,4 +108,13 @@ namespace mc {
 
         return result;
     }
+
+    double min(double p1, double p2) {
+        if(p1 < p2) return p1;
+        return p2;
+    }
+
+    double min(double p1, double p2, double p3) {
+        return min(p1, min(p2, p3));
+    }
 }
