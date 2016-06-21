@@ -164,6 +164,7 @@ namespace mc {
             value = coefficients.back() / p.coefficients.back();
             result.push_front(value);
             *this -= polynomial<TYPE>(value, degree() - p.degree()) * p;
+            normalize();
         }
         *this = polynomial<TYPE>(result);
         normalize();

@@ -1,43 +1,97 @@
 #include <stdlib.h>
 #include <iostream>
-
 #include "polynomial.h"
 
 /*
  * Simple C++ Test Suite
  */
 
-void polynomial_test() {
-    std::cout << "polynomial test 1" << std::endl;
-    std::cout << "monomial creation" << std::endl;
-    mc::polynomial<double> p = 10;
+void polynomial_init() {
+    std::cout << "polynomial initialization test" << std::endl;
+    mc::polynomial<double> p = {1, 0, 2, 5, 0};
     std::cout << p << std::endl;
+    if (p.degree() > 3){
+        std::cout << "%TEST_FAILED% time=0 testname=initialization test (polynomial_test) message=incorrect polynomial degree" << std::endl;
+        return;
+    }
+    
+    if(p[0] != 1 || p[1] != 0 || p[2] != 2 || p[3] != 5){
+        std::cout << "%TEST_FAILED% time=0 testname=initialization test (polynomial_test) message=incorrect coefficients" << std::endl;
+        return;        
+    }
 }
 
-void polynomial_division_test() {
-    std::cout << "polynomial test 2" << std::endl;
-    mc::polynomial<double> a = {2, -3, 1};
-    mc::polynomial<double> b = {-1, 1};
-    mc::polynomial<double> result = {-2, 1};
-    if(a / b == result){
-        std::cout << "%TEST_PASSED% time=0 testname=polynomial_division_test (polynomial) message=polynomial division" << std::endl;
+void polynomial_sum() {
+    std::cout << "polynomial sum test" << std::endl;
+    mc::polynomial<double> p = {1, 1, -2, 1},
+            g = {0, 1, 2, -1}, result = p+g;
+    mc::polynomial<double> test = {1, 2};
+    std::cout << p << " + " << g << " = " << result << std::endl;
+    if(!(test == result)){
+        std::cout << "%TEST_FAILED% time=0 testname=sum test (polynomial_test) message=incorrect sum" << std::endl;
+        return;        
     }
-    else{
-        std::cout << "%TEST_FAILED% time=0 testname=polynomial_division_test (polynomial) message=polynomial division error" << std::endl;
+}
+
+void polynomial_multiplication() {
+    std::cout << "polynomial multiplication test" << std::endl;
+    mc::polynomial<double> p = {1, 1, 0},
+            g = {-1, 1, -1, 1}, result = p*g;
+    mc::polynomial<double> test = {-1, 0, 0, 0, 1};
+    std::cout << p << " * " << g << " = " << result << std::endl;
+    if(!(test == result)){
+        std::cout << "%TEST_FAILED% time=0 testname=multiplication test (polynomial_test) message=incorrect product sum" << std::endl;
+        return;        
+    }
+}
+
+void polynomial_division() {
+    std::cout << "polynomial division test" << std::endl;
+    mc::polynomial<double> p = {0, 0, 0, 1},
+            g = {-1, 1}, result = p/g;
+    mc::polynomial<double> test = {1, 1, 1};
+    std::cout << p << " / " << g << " = " << result << std::endl;
+    if(!(test == result)){
+        std::cout << "%TEST_FAILED% time=0 testname=division test (polynomial_test) message=incorrect division result" << std::endl;
+        return;        
+    }
+}
+
+void polynomial_mod() {
+    std::cout << "polynomial mod test" << std::endl;
+    mc::polynomial<double> p = {0, 0, 0, 1},
+            g = {-1, 1}, result = p%g;
+    mc::polynomial<double> test = {1};
+    std::cout << p << " / " << g << " = " << result << std::endl;
+    if(!(test == result)){
+        std::cout << "%TEST_FAILED% time=0 testname=mod test (polynomial_test) message=incorrect mod result" << std::endl;
+        return;        
     }
 }
 
 int main(int argc, char** argv) {
-    std::cout << "%SUITE_STARTING% polynomial" << std::endl;
+    std::cout << "%SUITE_STARTING% newsimpletest2" << std::endl;
     std::cout << "%SUITE_STARTED%" << std::endl;
 
-    std::cout << "%TEST_STARTED% test1 (polynomial)" << std::endl;
-    polynomial_test();
-    std::cout << "%TEST_FINISHED% time=0 test1 (polynomial)" << std::endl;
+    std::cout << "%TEST_STARTED% test1 (polynomial init)" << std::endl;
+    polynomial_init();
+    std::cout << "%TEST_FINISHED% time=0 test1 (polynomial init)" << std::endl;
+    
+    std::cout << "%TEST_STARTED% test2 (polynomial sum)" << std::endl;
+    polynomial_sum();
+    std::cout << "%TEST_FINISHED% time=0 test2 (polynomial sum)" << std::endl;
 
-    std::cout << "%TEST_STARTED% polynomial_division_test (polynomial)\n" << std::endl;
-    polynomial_division_test();
-    std::cout << "%TEST_FINISHED% time=0 polynomial_division_test (polynomial)" << std::endl;
+    std::cout << "%TEST_STARTED% test3 (polynomial multiplication)" << std::endl;
+    polynomial_multiplication();
+    std::cout << "%TEST_FINISHED% time=0 test3 (polynomial multiplication)" << std::endl;
+
+    std::cout << "%TEST_STARTED% test4 (polynomial division)" << std::endl;
+    polynomial_division();
+    std::cout << "%TEST_FINISHED% time=0 test4 (polynomial division)" << std::endl;
+
+    std::cout << "%TEST_STARTED% test5 (polynomial mod)" << std::endl;
+    polynomial_mod();
+    std::cout << "%TEST_FINISHED% time=0 test5 (polynomial mod)" << std::endl;
 
     std::cout << "%SUITE_FINISHED% time=0" << std::endl;
 
