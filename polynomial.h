@@ -77,18 +77,21 @@ namespace mc {
     polynomial<TYPE>::polynomial(TYPE value, size_t degree) {
         extend(degree);
         coefficients.push_back(value);
+        normalize();
     }
 
 #if __cplusplus >= 201103L
     template<class TYPE>
     polynomial<TYPE>::polynomial(std::initializer_list<TYPE> p) {
         coefficients.insert(coefficients.end(), p.begin(), p.end());
+        normalize();
     }
 #endif
 
     template<class TYPE>
     polynomial<TYPE>::polynomial(std::deque<TYPE> p) {
         coefficients.insert(coefficients.end(), p.begin(), p.end());
+        normalize();
     }
 
     template<class TYPE>
