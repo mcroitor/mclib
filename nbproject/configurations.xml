@@ -19,6 +19,7 @@
       <itemPath>mcxml.h</itemPath>
       <itemPath>permutation.h</itemPath>
       <itemPath>polynomial.h</itemPath>
+      <itemPath>stat.h</itemPath>
       <itemPath>strmanip.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -197,6 +198,8 @@
       </item>
       <item path="polynomial.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="stat.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="strmanip.cpp" ex="false" tool="1" flavor2="8">
       </item>
       <item path="strmanip.h" ex="false" tool="3" flavor2="0">
@@ -342,6 +345,8 @@
       <item path="permutation.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="polynomial.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="stat.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="strmanip.cpp" ex="false" tool="1" flavor2="0">
       </item>
