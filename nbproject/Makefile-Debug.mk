@@ -35,7 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/BigInteger.o \
+	${OBJECTDIR}/biginteger.o \
 	${OBJECTDIR}/bignumber.o \
 	${OBJECTDIR}/complex.o \
 	${OBJECTDIR}/defines.o \
@@ -92,10 +92,10 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libmclib.a: ${OBJECTFILES}
 	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libmclib.a ${OBJECTFILES} 
 	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libmclib.a
 
-${OBJECTDIR}/BigInteger.o: BigInteger.cpp 
+${OBJECTDIR}/biginteger.o: biginteger.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BigInteger.o BigInteger.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/biginteger.o biginteger.cpp
 
 ${OBJECTDIR}/bignumber.o: bignumber.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -205,17 +205,17 @@ ${TESTDIR}/tests/newsimpletest2.o: tests/newsimpletest2.cpp
 	$(COMPILE.cc) -g -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/newsimpletest2.o tests/newsimpletest2.cpp
 
 
-${OBJECTDIR}/BigInteger_nomain.o: ${OBJECTDIR}/BigInteger.o BigInteger.cpp 
+${OBJECTDIR}/biginteger_nomain.o: ${OBJECTDIR}/biginteger.o biginteger.cpp 
 	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/BigInteger.o`; \
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/biginteger.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BigInteger_nomain.o BigInteger.cpp;\
+	    $(COMPILE.cc) -g -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/biginteger_nomain.o biginteger.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/BigInteger.o ${OBJECTDIR}/BigInteger_nomain.o;\
+	    ${CP} ${OBJECTDIR}/biginteger.o ${OBJECTDIR}/biginteger_nomain.o;\
 	fi
 
 ${OBJECTDIR}/bignumber_nomain.o: ${OBJECTDIR}/bignumber.o bignumber.cpp 

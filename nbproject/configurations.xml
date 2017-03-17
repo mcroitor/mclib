@@ -10,8 +10,8 @@
         <itemPath>geometry/point.h</itemPath>
         <itemPath>geometry/vector.h</itemPath>
       </logicalFolder>
-      <itemPath>BigInteger.h</itemPath>
       <itemPath>array.h</itemPath>
+      <itemPath>biginteger.h</itemPath>
       <itemPath>bignumber.h</itemPath>
       <itemPath>complex.h</itemPath>
       <itemPath>defines.h</itemPath>
@@ -30,7 +30,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>BigInteger.cpp</itemPath>
+      <itemPath>biginteger.cpp</itemPath>
       <itemPath>bignumber.cpp</itemPath>
       <itemPath>complex.cpp</itemPath>
       <itemPath>defines.cpp</itemPath>
@@ -101,11 +101,11 @@
         <archiverTool>
         </archiverTool>
       </compileType>
-      <item path="BigInteger.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="BigInteger.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="array.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="biginteger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="biginteger.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="bignumber.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -289,11 +289,11 @@
         <archiverTool>
         </archiverTool>
       </compileType>
-      <item path="BigInteger.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="BigInteger.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="array.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="biginteger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="biginteger.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="bignumber.cpp" ex="false" tool="1" flavor2="0">
       </item>
