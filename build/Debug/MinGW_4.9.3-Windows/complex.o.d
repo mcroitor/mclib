@@ -1,6 +1,6 @@
-build/Debug/MinGW_4.9.3-Windows/complex.o: complex.cpp complex.h \
+build/Debug/MinGW_4.9.3-Windows/complex.o: complex.cpp algebra/complex.h \
  defines.h
 
-complex.h:
+algebra/complex.h:
 
 defines.h:

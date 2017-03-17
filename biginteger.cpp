@@ -1,4 +1,4 @@
-#include "BigInteger.h"
+#include "./algebra/biginteger.h"
 
 namespace mc {
 

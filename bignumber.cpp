@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "bignumber.h"
+#include "./algebra/bignumber.h"
 
 namespace mc {
     /* TODO #: add sign support */

@@ -1,8 +1,8 @@
 build/Debug/MinGW_4.9.3-Windows/tests/tests/bi_test.o: tests/bi_test.cpp \
- BigInteger.h bignumber.h defines.h
+ algebra/BigInteger.h algebra/bignumber.h algebra/../defines.h
 
-BigInteger.h:
+algebra/BigInteger.h:
 
-bignumber.h:
+algebra/bignumber.h:
 
-defines.h:
+algebra/../defines.h:

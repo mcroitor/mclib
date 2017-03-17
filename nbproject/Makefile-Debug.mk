@@ -54,7 +54,8 @@ TESTFILES= \
 	${TESTDIR}/TestFiles/f3 \
 	${TESTDIR}/TestFiles/f2 \
 	${TESTDIR}/TestFiles/f4 \
-	${TESTDIR}/TestFiles/f5
+	${TESTDIR}/TestFiles/f5 \
+	${TESTDIR}/TestFiles/f8
 
 # Test Object Files
 TESTOBJECTFILES= \
@@ -64,7 +65,8 @@ TESTOBJECTFILES= \
 	${TESTDIR}/tests/newsimpletest.o \
 	${TESTDIR}/tests/newsimpletest1.o \
 	${TESTDIR}/tests/newsimpletest2.o \
-	${TESTDIR}/tests/polynomial_test.o
+	${TESTDIR}/tests/polynomial_test.o \
+	${TESTDIR}/tests/testdefines.o
 
 # C Compiler Flags
 CFLAGS=
@@ -162,6 +164,10 @@ ${TESTDIR}/TestFiles/f5: ${TESTDIR}/tests/newsimpletest2.o ${OBJECTFILES:%.o=%_n
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f5 $^ ${LDLIBSOPTIONS} 
 
+${TESTDIR}/TestFiles/f8: ${TESTDIR}/tests/testdefines.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f8 $^ ${LDLIBSOPTIONS} 
+
 
 ${TESTDIR}/tests/newsimpletest.o: tests/newsimpletest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
@@ -203,6 +209,12 @@ ${TESTDIR}/tests/newsimpletest2.o: tests/newsimpletest2.cpp
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/newsimpletest2.o tests/newsimpletest2.cpp
+
+
+${TESTDIR}/tests/testdefines.o: tests/testdefines.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/testdefines.o tests/testdefines.cpp
 
 
 ${OBJECTDIR}/biginteger_nomain.o: ${OBJECTDIR}/biginteger.o biginteger.cpp 
@@ -307,6 +319,7 @@ ${OBJECTDIR}/strmanip_nomain.o: ${OBJECTDIR}/strmanip.o strmanip.cpp
 	    ${TESTDIR}/TestFiles/f2 || true; \
 	    ${TESTDIR}/TestFiles/f4 || true; \
 	    ${TESTDIR}/TestFiles/f5 || true; \
+	    ${TESTDIR}/TestFiles/f8 || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi

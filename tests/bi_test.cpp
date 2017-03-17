@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <iostream>
-#include "BigInteger.h"
+#include "./algebra/BigInteger.h"
 
 /*
  * Simple C++ Test Suite

@@ -16,9 +16,9 @@ namespace mc {
         return x;
     }
 
-    bool isPrimary(const uint64_t& p) {
-        uint64_t divisor = 2;
-        uint64_t top = (uint64_t) sqrt(p);
+    bool isPrimary(const long long& p) {
+        long long divisor = 2;
+        long long top = (long long) sqrt(p);
 
         for (; divisor <= top; ++divisor) {
             if (p % divisor == 0) {

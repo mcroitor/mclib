@@ -1,8 +1,9 @@
 build/Debug/MinGW_4.9.3-Windows/tests/tests/newsimpletest1.o: \
- tests/newsimpletest1.cpp matrix.h array.h defines.h
+ tests/newsimpletest1.cpp algebra/matrix.h algebra/../array.h \
+ algebra/../defines.h
 
-matrix.h:
+algebra/matrix.h:
 
-array.h:
+algebra/../array.h:
 
-defines.h:
+algebra/../defines.h:

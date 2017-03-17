@@ -1,6 +1,6 @@
-build/Debug/MinGW_4.9.3-Windows/bignumber.o: bignumber.cpp bignumber.h \
- defines.h
+build/Debug/MinGW_4.9.3-Windows/bignumber.o: bignumber.cpp \
+ algebra/bignumber.h algebra/../defines.h
 
-bignumber.h:
+algebra/bignumber.h:
 
-defines.h:
+algebra/../defines.h:

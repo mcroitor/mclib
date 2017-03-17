@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <iostream>
-#include "polynomial.h"
-#include "bignumber.h"
-#include "BigInteger.h"
+#include "./algebra/polynomial.h"
+#include "./algebra/bignumber.h"
+#include "./algebra/BigInteger.h"
 
 /*
  * Simple C++ Test Suite
@@ -123,9 +123,9 @@ int main(int argc, char** argv) {
     polynomial_mod();
     std::cout << "%TEST_FINISHED% time=0 test5 (polynomial mod)" << std::endl;
 
-    std::cout << "%TEST_STARTED% test6 (polynomial big integer)" << std::endl;
-    polynomial_big_int();
-    std::cout << "%TEST_FINISHED% time=0 test5 (polynomial big integer)" << std::endl;
+//    std::cout << "%TEST_STARTED% test6 (polynomial big integer)" << std::endl;
+//    polynomial_big_int();
+//    std::cout << "%TEST_FINISHED% time=0 test5 (polynomial big integer)" << std::endl;
 
     std::cout << "%TEST_STARTED% test6 (polynomial spec)" << std::endl;
     polynomial_spec();

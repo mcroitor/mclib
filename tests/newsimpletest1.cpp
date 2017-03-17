@@ -7,7 +7,7 @@
 
 #include <stdlib.h>
 #include <iostream>
-#include "matrix.h"
+#include "./algebra/matrix.h"
 
 /*
  * Simple C++ Test Suite

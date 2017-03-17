@@ -1,10 +1,10 @@
 build/Debug/MinGW_4.9.3-Windows/strmanip.o: strmanip.cpp strmanip.h \
- matrix.h array.h defines.h
+ algebra/matrix.h algebra/../array.h algebra/../defines.h
 
 strmanip.h:
 
-matrix.h:
+algebra/matrix.h:
 
-array.h:
+algebra/../array.h:
 
-defines.h:
+algebra/../defines.h:
