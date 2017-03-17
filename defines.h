@@ -75,6 +75,12 @@ namespace mc {
     
     double min(double, double);
     double min(double, double, double);
+    
+    long long gcd(long long, long long);
+    long long gcd(long long, long long, long long);
+    
+    long long lcm(long long, long long);
+    long long lcm(long long, long long, long long);
 }
 #endif	/* DEFINES_H */
 

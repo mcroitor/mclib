@@ -10,8 +10,9 @@
         <itemPath>geometry/point.h</itemPath>
         <itemPath>geometry/vector.h</itemPath>
       </logicalFolder>
+      <itemPath>BigInteger.h</itemPath>
       <itemPath>array.h</itemPath>
-      <itemPath>biginteger.h</itemPath>
+      <itemPath>bignumber.h</itemPath>
       <itemPath>complex.h</itemPath>
       <itemPath>defines.h</itemPath>
       <itemPath>extalg.h</itemPath>
@@ -19,6 +20,7 @@
       <itemPath>mcxml.h</itemPath>
       <itemPath>permutation.h</itemPath>
       <itemPath>polynomial.h</itemPath>
+      <itemPath>probability.h</itemPath>
       <itemPath>strmanip.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -28,10 +30,12 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>biginteger.cpp</itemPath>
+      <itemPath>BigInteger.cpp</itemPath>
+      <itemPath>bignumber.cpp</itemPath>
       <itemPath>complex.cpp</itemPath>
       <itemPath>defines.cpp</itemPath>
       <itemPath>mcxml.cpp</itemPath>
+      <itemPath>probability.cpp</itemPath>
       <itemPath>strmanip.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -43,6 +47,15 @@
                      projectFiles="true"
                      kind="TEST">
         <itemPath>tests/newsimpletest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f7"
+                     displayName="BigInteger test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/bi_test.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f6" displayName="defines" projectFiles="true" kind="TEST">
+        <itemPath>tests/defines.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f3"
                      displayName="extalg Test"
@@ -88,11 +101,15 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <item path="BigInteger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="BigInteger.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="array.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="biginteger.cpp" ex="false" tool="1" flavor2="0">
+      <item path="bignumber.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="biginteger.h" ex="false" tool="3" flavor2="0">
+      <item path="bignumber.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="complex.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -179,6 +196,36 @@
           <output>${TESTDIR}/TestFiles/f5</output>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f6">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f6</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f7">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f7</output>
+        </linkerTool>
+      </folder>
       <item path="geometry/cut.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="geometry/line.h" ex="false" tool="3" flavor2="0">
@@ -197,9 +244,17 @@
       </item>
       <item path="polynomial.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="probability.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="probability.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="strmanip.cpp" ex="false" tool="1" flavor2="8">
       </item>
       <item path="strmanip.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/bi_test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/defines.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/extalg_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -234,11 +289,15 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <item path="BigInteger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="BigInteger.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="array.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="biginteger.cpp" ex="false" tool="1" flavor2="0">
+      <item path="bignumber.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="biginteger.h" ex="false" tool="3" flavor2="0">
+      <item path="bignumber.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="complex.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -325,6 +384,36 @@
           <output>${TESTDIR}/TestFiles/f5</output>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f6">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f6</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f7">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f7</output>
+        </linkerTool>
+      </folder>
       <item path="geometry/cut.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="geometry/line.h" ex="false" tool="3" flavor2="0">
@@ -343,9 +432,17 @@
       </item>
       <item path="polynomial.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="probability.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="probability.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="strmanip.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="strmanip.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/bi_test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/defines.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/extalg_test.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -96,6 +96,11 @@ namespace mc {
 
     std::string ToString(int64_t p, size_t d) {
         std::string result(""), tmp("0");
+        int sign = 0;
+        if(p < 0){
+            sign = 1;
+            p = -p;
+        }
         uint64_t condition = d * p;
 
         do {
@@ -106,6 +111,9 @@ namespace mc {
             condition = d * p;
         } while (condition > 0);
 
+        if(sign == 1){
+            result.insert(result.begin(), '-');
+        }
         return result;
     }
 
@@ -116,5 +124,19 @@ namespace mc {
 
     double min(double p1, double p2, double p3) {
         return min(p1, min(p2, p3));
+    }
+    
+    long long gcd(long long a, long long b){
+        if (b == 0) return a;
+        return gcd(b, a % b);
+    }
+    long long gcd(long long a, long long b, long long c){
+        return gcd(gcd(a, b), c);
+    }
+    long long lcm(long long a, long long b){
+        return a*b/gcd(a, b);
+    }
+    long long lcm(long long a, long long b, long long c){
+        return lcm(lcm(a, b), c);
     }
 }
