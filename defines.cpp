@@ -50,7 +50,7 @@ namespace mc {
     }
 
     double arctg(const double& p) {
-        if (abs(p) - 1 > EPS) throw INFINITY_ERROR;
+        if ((mc::abs(p) - 1) > EPS) throw INFINITY_ERROR;
         double result = 0.0;
         double mono = p;
         int i = 1;
@@ -101,15 +101,13 @@ namespace mc {
             sign = 1;
             p = -p;
         }
-        uint64_t condition = d * p;
 
         do {
             tmp[0] = p % 10 + '0';
             result = tmp + result;
             p /= 10;
             --d;
-            condition = d * p;
-        } while (condition > 0);
+        } while (p > 0 || d > 0);
 
         if(sign == 1){
             result.insert(result.begin(), '-');
