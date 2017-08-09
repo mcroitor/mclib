@@ -29,6 +29,13 @@ namespace mc {
         return !(p1 == p2);
     }
 
+    /**
+     * compare 2 double values with precision EPS.
+     * TODO#: rewrite / add version with specification of precision
+     * @param 
+     * @param 
+     * @return true if 2 doubles are almost equal
+     */
     bool dbl_compare(const double&, const double&);
 
     /**
@@ -75,6 +82,12 @@ namespace mc {
     
     double min(double, double);
     double min(double, double, double);
+    
+    long long gcd(long long, long long);
+    long long gcd(long long, long long, long long);
+    
+    long long lcm(long long, long long);
+    long long lcm(long long, long long, long long);
 }
 #endif	/* DEFINES_H */
 

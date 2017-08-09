@@ -16,9 +16,9 @@ namespace mc {
         return x;
     }
 
-    bool isPrimary(const uint64_t& p) {
-        uint64_t divisor = 2;
-        uint64_t top = (uint64_t) sqrt(p);
+    bool isPrimary(const long long& p) {
+        long long divisor = 2;
+        long long top = (long long) sqrt(p);
 
         for (; divisor <= top; ++divisor) {
             if (p % divisor == 0) {
@@ -50,7 +50,7 @@ namespace mc {
     }
 
     double arctg(const double& p) {
-        if (abs(p) - 1 > EPS) throw INFINITY_ERROR;
+        if ((mc::abs(p) - 1) > EPS) throw INFINITY_ERROR;
         double result = 0.0;
         double mono = p;
         int i = 1;
@@ -96,16 +96,22 @@ namespace mc {
 
     std::string ToString(int64_t p, size_t d) {
         std::string result(""), tmp("0");
-        uint64_t condition = d * p;
+        int sign = 0;
+        if(p < 0){
+            sign = 1;
+            p = -p;
+        }
 
         do {
             tmp[0] = p % 10 + '0';
             result = tmp + result;
             p /= 10;
             --d;
-            condition = d * p;
-        } while (condition > 0);
+        } while (p > 0 || d > 0);
 
+        if(sign == 1){
+            result.insert(result.begin(), '-');
+        }
         return result;
     }
 
@@ -116,5 +122,19 @@ namespace mc {
 
     double min(double p1, double p2, double p3) {
         return min(p1, min(p2, p3));
+    }
+    
+    long long gcd(long long a, long long b){
+        if (b == 0) return a;
+        return gcd(b, a % b);
+    }
+    long long gcd(long long a, long long b, long long c){
+        return gcd(gcd(a, b), c);
+    }
+    long long lcm(long long a, long long b){
+        return a*b/gcd(a, b);
+    }
+    long long lcm(long long a, long long b, long long c){
+        return lcm(lcm(a, b), c);
     }
 }

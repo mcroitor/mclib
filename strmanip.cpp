@@ -1,5 +1,5 @@
 #include "strmanip.h"
-#include "matrix.h"
+#include "./algebra/matrix.h"
 
 
 namespace mc {

@@ -194,10 +194,6 @@ namespace mc {
 
     template<class TYPE>
     bool polynomial<TYPE>::equal(const polynomial<TYPE>& p) const {
-        // we can compare only normalized polynomials
-        //polynomial<TYPE> tmp = p;
-        //tmp.normalize();
-        //normalize();
         if (p.degree() != degree()) {
             return false;
         }
