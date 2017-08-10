@@ -21,7 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW_4.9.3-Windows
+CND_PLATFORM=MinGW64-Windows
 CND_DLIB_EXT=dll
 CND_CONF=Release
 CND_DISTDIR=dist
@@ -50,22 +50,22 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 TESTFILES= \
 	${TESTDIR}/TestFiles/f1 \
 	${TESTDIR}/TestFiles/f7 \
-	${TESTDIR}/TestFiles/f6 \
 	${TESTDIR}/TestFiles/f3 \
 	${TESTDIR}/TestFiles/f2 \
 	${TESTDIR}/TestFiles/f4 \
 	${TESTDIR}/TestFiles/f5 \
-	${TESTDIR}/TestFiles/f8
+	${TESTDIR}/TestFiles/f8 \
+	${TESTDIR}/TestFiles/f6
 
 # Test Object Files
 TESTOBJECTFILES= \
 	${TESTDIR}/tests/bi_test.o \
-	${TESTDIR}/tests/defines.o \
 	${TESTDIR}/tests/extalg_test.o \
 	${TESTDIR}/tests/newsimpletest.o \
 	${TESTDIR}/tests/newsimpletest1.o \
 	${TESTDIR}/tests/newsimpletest2.o \
 	${TESTDIR}/tests/polynomial_test.o \
+	${TESTDIR}/tests/test_mcxml.o \
 	${TESTDIR}/tests/testdefines.o
 
 # C Compiler Flags
@@ -94,37 +94,37 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libmclib.a: ${OBJECTFILES}
 	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libmclib.a ${OBJECTFILES} 
 	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libmclib.a
 
-${OBJECTDIR}/biginteger.o: biginteger.cpp 
+${OBJECTDIR}/biginteger.o: biginteger.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/biginteger.o biginteger.cpp
 
-${OBJECTDIR}/bignumber.o: bignumber.cpp 
+${OBJECTDIR}/bignumber.o: bignumber.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/bignumber.o bignumber.cpp
 
-${OBJECTDIR}/complex.o: complex.cpp 
+${OBJECTDIR}/complex.o: complex.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/complex.o complex.cpp
 
-${OBJECTDIR}/defines.o: defines.cpp 
+${OBJECTDIR}/defines.o: defines.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/defines.o defines.cpp
 
-${OBJECTDIR}/mcxml.o: mcxml.cpp 
+${OBJECTDIR}/mcxml.o: mcxml.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mcxml.o mcxml.cpp
 
-${OBJECTDIR}/probability.o: probability.cpp 
+${OBJECTDIR}/probability.o: probability.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/probability.o probability.cpp
 
-${OBJECTDIR}/strmanip.o: strmanip.cpp 
+${OBJECTDIR}/strmanip.o: strmanip.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/strmanip.o strmanip.cpp
@@ -138,35 +138,35 @@ ${OBJECTDIR}/strmanip.o: strmanip.cpp
 
 ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/newsimpletest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS}   
 
 ${TESTDIR}/TestFiles/f7: ${TESTDIR}/tests/bi_test.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}   -o ${TESTDIR}/TestFiles/f7 $^ ${LDLIBSOPTIONS} 
-
-${TESTDIR}/TestFiles/f6: ${TESTDIR}/tests/defines.o ${OBJECTFILES:%.o=%_nomain.o}
-	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}   -o ${TESTDIR}/TestFiles/f6 $^ ${LDLIBSOPTIONS} 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f7 $^ ${LDLIBSOPTIONS}   
 
 ${TESTDIR}/TestFiles/f3: ${TESTDIR}/tests/extalg_test.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}   -o ${TESTDIR}/TestFiles/f3 $^ ${LDLIBSOPTIONS} 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f3 $^ ${LDLIBSOPTIONS}   
 
 ${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/newsimpletest1.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}   -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS} 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS}   
 
 ${TESTDIR}/TestFiles/f4: ${TESTDIR}/tests/polynomial_test.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}   -o ${TESTDIR}/TestFiles/f4 $^ ${LDLIBSOPTIONS} 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f4 $^ ${LDLIBSOPTIONS}   
 
 ${TESTDIR}/TestFiles/f5: ${TESTDIR}/tests/newsimpletest2.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}   -o ${TESTDIR}/TestFiles/f5 $^ ${LDLIBSOPTIONS} 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f5 $^ ${LDLIBSOPTIONS}   
 
 ${TESTDIR}/TestFiles/f8: ${TESTDIR}/tests/testdefines.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}   -o ${TESTDIR}/TestFiles/f8 $^ ${LDLIBSOPTIONS} 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f8 $^ ${LDLIBSOPTIONS}   
+
+${TESTDIR}/TestFiles/f6: ${TESTDIR}/tests/test_mcxml.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f6 $^ ${LDLIBSOPTIONS}   
 
 
 ${TESTDIR}/tests/newsimpletest.o: tests/newsimpletest.cpp 
@@ -179,12 +179,6 @@ ${TESTDIR}/tests/bi_test.o: tests/bi_test.cpp
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/bi_test.o tests/bi_test.cpp
-
-
-${TESTDIR}/tests/defines.o: tests/defines.cpp 
-	${MKDIR} -p ${TESTDIR}/tests
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/defines.o tests/defines.cpp
 
 
 ${TESTDIR}/tests/extalg_test.o: tests/extalg_test.cpp 
@@ -215,6 +209,12 @@ ${TESTDIR}/tests/testdefines.o: tests/testdefines.cpp
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/testdefines.o tests/testdefines.cpp
+
+
+${TESTDIR}/tests/test_mcxml.o: tests/test_mcxml.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/test_mcxml.o tests/test_mcxml.cpp
 
 
 ${OBJECTDIR}/biginteger_nomain.o: ${OBJECTDIR}/biginteger.o biginteger.cpp 
@@ -314,12 +314,12 @@ ${OBJECTDIR}/strmanip_nomain.o: ${OBJECTDIR}/strmanip.o strmanip.cpp
 	then  \
 	    ${TESTDIR}/TestFiles/f1 || true; \
 	    ${TESTDIR}/TestFiles/f7 || true; \
-	    ${TESTDIR}/TestFiles/f6 || true; \
 	    ${TESTDIR}/TestFiles/f3 || true; \
 	    ${TESTDIR}/TestFiles/f2 || true; \
 	    ${TESTDIR}/TestFiles/f4 || true; \
 	    ${TESTDIR}/TestFiles/f5 || true; \
 	    ${TESTDIR}/TestFiles/f8 || true; \
+	    ${TESTDIR}/TestFiles/f6 || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi
@@ -327,7 +327,6 @@ ${OBJECTDIR}/strmanip_nomain.o: ${OBJECTDIR}/strmanip.o strmanip.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libmclib.a
 
 # Subprojects
 .clean-subprojects:

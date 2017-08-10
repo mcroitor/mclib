@@ -11,8 +11,9 @@ namespace mc {
 
         class attribute {
             string _name, _value;
+            attribute();
         public:
-            attribute(string& name_, string& value_);
+            attribute(const string& name_, const string& value_);
             string toString() const;
             const string name() const;
             const string value() const;

@@ -7,21 +7,21 @@ CND_BASEDIR=`pwd`
 CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
-CND_PLATFORM_Debug=MinGW_4.9.3-Windows
-CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW_4.9.3-Windows
+CND_PLATFORM_Debug=MinGW-Windows
+CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW-Windows
 CND_ARTIFACT_NAME_Debug=libmclib.a
-CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW_4.9.3-Windows/libmclib.a
-CND_PACKAGE_DIR_Debug=dist/Debug/MinGW_4.9.3-Windows/package
+CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/libmclib.a
+CND_PACKAGE_DIR_Debug=dist/Debug/MinGW-Windows/package
 CND_PACKAGE_NAME_Debug=mclib.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/MinGW_4.9.3-Windows/package/mclib.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/mclib.tar
 # Release configuration
-CND_PLATFORM_Release=MinGW_4.9.3-Windows
-CND_ARTIFACT_DIR_Release=dist/Release/MinGW_4.9.3-Windows
+CND_PLATFORM_Release=MinGW64-Windows
+CND_ARTIFACT_DIR_Release=dist/Release/MinGW64-Windows
 CND_ARTIFACT_NAME_Release=libmclib.a
-CND_ARTIFACT_PATH_Release=dist/Release/MinGW_4.9.3-Windows/libmclib.a
-CND_PACKAGE_DIR_Release=dist/Release/MinGW_4.9.3-Windows/package
+CND_ARTIFACT_PATH_Release=dist/Release/MinGW64-Windows/libmclib.a
+CND_PACKAGE_DIR_Release=dist/Release/MinGW64-Windows/package
 CND_PACKAGE_NAME_Release=mclib.tar
-CND_PACKAGE_PATH_Release=dist/Release/MinGW_4.9.3-Windows/package/mclib.tar
+CND_PACKAGE_PATH_Release=dist/Release/MinGW64-Windows/package/mclib.tar
 #
 # include compiler specific variables
 #

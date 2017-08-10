@@ -20,7 +20,7 @@ namespace mc {
             }
         };
 
-        attribute::attribute(string& name_, string& value_)
+        attribute::attribute(const string& name_, const string& value_)
         : _name(name_), _value(value_) {
         }
 
@@ -44,7 +44,7 @@ namespace mc {
             return result;
         }
 
-        element::element(string name_) : _name(name_), parent(NULL) {
+        element::element(string name_) : _name(name_), parent(nullptr) {
             string tmp(_name), aux("id");
             char* _value = new char[255];
 
@@ -68,6 +68,10 @@ namespace mc {
         }
 
         void element::appendChild(element* element_) {
+            // TODO #: throw clear exception!
+            if(element_ == nullptr){
+                throw std::exception();
+            }
             element_->parent = this;
             this->childs.push_back(element_);
         }
@@ -77,7 +81,7 @@ namespace mc {
             i = std::find_if(attributes.begin(), attributes.end(), checker(name_));
             if (i != attributes.end())
                 return (*i)->value();
-            throw "error: attribute not found";
+            throw std::exception();
         }
 
         void element::setAttribute(string name_, string value_) {
@@ -91,12 +95,12 @@ namespace mc {
         }
 
         element* element::getElementById(const string& _value) {
-            element* result = NULL;
+            element* result = nullptr;
             if (this->getAttribute("id").compare(_value) == 0) {
                 result = this;
             } else {
                 std::vector<element*>::iterator i = childs.begin();
-                while (result == NULL && i != childs.end()) {
+                while (result == nullptr && i != childs.end()) {
                     result = (*i)->getElementById(_value);
                     ++i;
                 }
@@ -150,14 +154,14 @@ namespace mc {
         }
 
         element* element::firstChild() {
-            element* result = NULL;
+            element* result = nullptr;
             if (!childs.empty())
                 result = childs.front();
             return result;
         }
 
         element* element::lastChild() {
-            element* result = NULL;
+            element* result = nullptr;
             if (!childs.empty())
                 result = childs.back();
             return result;
@@ -187,7 +191,7 @@ namespace mc {
         }
 
         bool element::removeChild(element* old) {
-            if (old == NULL)
+            if (old == nullptr)
                 return false;
             if (old->parent != this)
                 return false;
@@ -198,9 +202,9 @@ namespace mc {
         }
 
         bool element::insertAfter(element* child, element* element_) {
-            if (element_ == NULL)
+            if (element_ == nullptr)
                 return false;
-            if (child == NULL) {
+            if (child == nullptr) {
                 childs.push_back(element_);
                 return true;
             }
