@@ -9,19 +9,19 @@ namespace mc {
         enum class SIGN {
             plus, minus
         };
-        BigNumber value;
         SIGN sign;
+        BigNumber value;
     public:
         BigInteger();
-        BigInteger(int64_t);
-        BigInteger(const BigNumber&);
+        explicit BigInteger(int64_t);
+        explicit BigInteger(const BigNumber&);
         BigInteger(const BigInteger&);
-        BigInteger(const string&);
+        explicit BigInteger(const string&);
 
-        BigInteger operator=(const BigNumber&);
-        BigInteger operator=(const BigInteger&);
-        BigInteger operator=(const string&);
-        BigInteger operator=(const int64_t&);
+        const BigInteger& operator=(const BigNumber&);
+        const BigInteger& operator=(const BigInteger&);
+        const BigInteger& operator=(const string&);
+        const BigInteger& operator=(const int64_t&);
         
         BigInteger operator -(void);
         BigInteger operator +(void);
