@@ -6,9 +6,11 @@ namespace mc {
     typedef std::string string;
 
     class BigInteger {
+    public:
         enum class SIGN {
             plus, minus
         };
+    private:
         SIGN sign;
         BigNumber value;
     public:
@@ -32,6 +34,8 @@ namespace mc {
         void operator/=(const BigInteger&);
 
         string toString() const;
+        size_t NrOfDigits() const;
+        BigInteger::SIGN Sign() const;
     };
 
     BigInteger operator+(const BigInteger&, const BigInteger&);

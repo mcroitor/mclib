@@ -12,13 +12,13 @@ namespace mc{
         static string normalize(const string&);
     public:
         BigNumber();
-        BigNumber(uint64_t);
+        explicit BigNumber(uint64_t);
         BigNumber(const BigNumber&);
-        BigNumber(const string&);
+        explicit BigNumber(const string&);
         
-        BigNumber operator = (const BigNumber&);
-        BigNumber operator = (const string&);
-        BigNumber operator = (const uint64_t&);
+        const BigNumber& operator = (const BigNumber&);
+        const BigNumber& operator = (const string&);
+        const BigNumber& operator = (const uint64_t&);
         
         void operator += (const BigNumber&);
         void operator -= (const BigNumber&);
@@ -26,6 +26,7 @@ namespace mc{
         void operator /= (const BigNumber&);
         
         string toString() const;
+        size_t NrOfDigits() const;
     };
     
     BigNumber operator + (const BigNumber&, const BigNumber&);

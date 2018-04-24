@@ -81,7 +81,7 @@ namespace mc {
             return el + SIZE;
         }
 
-        bool operator==(const array<TYPE, SIZE>& a) {
+        bool operator==(const array<TYPE, SIZE>& a) const {
             size_t i;
             for (i = 0; i != SIZE; ++i) {
                 if (el[i] != a.el[i]) return false;
@@ -89,15 +89,15 @@ namespace mc {
             return true;
         }
 
-        size_t size() const {
+        static size_t size() const {
             return SIZE;
         }
 
-        size_t max_size() const {
+        static size_t max_size() const {
             return SIZE;
         }
 
-        bool empty() const {
+        static bool empty() const {
             return false;
         }
 

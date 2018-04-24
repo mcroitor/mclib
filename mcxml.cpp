@@ -10,10 +10,10 @@ namespace mc {
         struct checker {
             string name;
 
-            checker(string n) : name(n) {
+            explicit checker(const string& n) : name(n) {
             }
 
-            bool operator()(attribute* attr) {
+            bool operator()(attribute* attr) const {
                 if (name == attr->name())
                     return true;
                 return false;
@@ -69,7 +69,7 @@ namespace mc {
 
         void element::appendChild(element* element_) {
             // TODO #: throw clear exception!
-            if(element_ == nullptr){
+            if (element_ == nullptr) {
                 throw std::exception();
             }
             element_->parent = this;
@@ -176,15 +176,13 @@ namespace mc {
         }
 
         element::~element() {
-            attribute* tmp;
             while (attributes.size() != 0) {
-                tmp = attributes.back();
+                attribute* tmp = attributes.back();
                 attributes.pop_back();
                 delete tmp;
             }
-            element* aux;
             while (childs.size() != 0) {
-                aux = childs.back();
+                element* aux = childs.back();
                 childs.pop_back();
                 delete aux;
             }

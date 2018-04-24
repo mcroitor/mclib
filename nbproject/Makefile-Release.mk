@@ -21,7 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW64-Windows
+CND_PLATFORM=MinGW-Windows
 CND_DLIB_EXT=dll
 CND_CONF=Release
 CND_DISTDIR=dist
@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/biginteger.o \
 	${OBJECTDIR}/bignumber.o \
 	${OBJECTDIR}/complex.o \
+	${OBJECTDIR}/date.o \
 	${OBJECTDIR}/defines.o \
 	${OBJECTDIR}/mcxml.o \
 	${OBJECTDIR}/probability.o \
@@ -50,6 +51,7 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 TESTFILES= \
 	${TESTDIR}/TestFiles/f1 \
 	${TESTDIR}/TestFiles/f7 \
+	${TESTDIR}/TestFiles/f9 \
 	${TESTDIR}/TestFiles/f3 \
 	${TESTDIR}/TestFiles/f2 \
 	${TESTDIR}/TestFiles/f4 \
@@ -60,6 +62,7 @@ TESTFILES= \
 # Test Object Files
 TESTOBJECTFILES= \
 	${TESTDIR}/tests/bi_test.o \
+	${TESTDIR}/tests/date_test.o \
 	${TESTDIR}/tests/extalg_test.o \
 	${TESTDIR}/tests/newsimpletest.o \
 	${TESTDIR}/tests/newsimpletest1.o \
@@ -109,6 +112,11 @@ ${OBJECTDIR}/complex.o: complex.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/complex.o complex.cpp
 
+${OBJECTDIR}/date.o: date.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/date.o date.cpp
+
 ${OBJECTDIR}/defines.o: defines.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -143,6 +151,10 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/newsimpletest.o ${OBJECTFILES:%.o=%_no
 ${TESTDIR}/TestFiles/f7: ${TESTDIR}/tests/bi_test.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc} -o ${TESTDIR}/TestFiles/f7 $^ ${LDLIBSOPTIONS}   
+
+${TESTDIR}/TestFiles/f9: ${TESTDIR}/tests/date_test.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f9 $^ ${LDLIBSOPTIONS}   
 
 ${TESTDIR}/TestFiles/f3: ${TESTDIR}/tests/extalg_test.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
@@ -179,6 +191,12 @@ ${TESTDIR}/tests/bi_test.o: tests/bi_test.cpp
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/bi_test.o tests/bi_test.cpp
+
+
+${TESTDIR}/tests/date_test.o: tests/date_test.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/date_test.o tests/date_test.cpp
 
 
 ${TESTDIR}/tests/extalg_test.o: tests/extalg_test.cpp 
@@ -256,6 +274,19 @@ ${OBJECTDIR}/complex_nomain.o: ${OBJECTDIR}/complex.o complex.cpp
 	    ${CP} ${OBJECTDIR}/complex.o ${OBJECTDIR}/complex_nomain.o;\
 	fi
 
+${OBJECTDIR}/date_nomain.o: ${OBJECTDIR}/date.o date.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/date.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/date_nomain.o date.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/date.o ${OBJECTDIR}/date_nomain.o;\
+	fi
+
 ${OBJECTDIR}/defines_nomain.o: ${OBJECTDIR}/defines.o defines.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/defines.o`; \
@@ -314,6 +345,7 @@ ${OBJECTDIR}/strmanip_nomain.o: ${OBJECTDIR}/strmanip.o strmanip.cpp
 	then  \
 	    ${TESTDIR}/TestFiles/f1 || true; \
 	    ${TESTDIR}/TestFiles/f7 || true; \
+	    ${TESTDIR}/TestFiles/f9 || true; \
 	    ${TESTDIR}/TestFiles/f3 || true; \
 	    ${TESTDIR}/TestFiles/f2 || true; \
 	    ${TESTDIR}/TestFiles/f4 || true; \

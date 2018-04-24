@@ -145,7 +145,7 @@ namespace mc {
 
     template<class TYPE, size_t NUM_ROWS, size_t NUM_COLS>
     std::ostream& operator<<(std::ostream& out, const matrix<TYPE, NUM_ROWS, NUM_COLS>& m) {
-        size_t i, j;
+        size_t i;
         for (i = 0; i != NUM_ROWS; ++i) {
             out << m[i] << "\n";
         }

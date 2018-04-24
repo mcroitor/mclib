@@ -30,7 +30,7 @@ namespace mc {
             const string value() const;
             void value(string);
             
-            element(string name_ = "element");
+            explicit element(string name_ = "element");
             ~element();
             void appendChild(element* element_);
             string getAttribute(const string name_);
@@ -50,7 +50,7 @@ namespace mc {
             element* getElementById(const string& value);
             std::vector<element*> getElementsByTagName(const string& name_);
             string toString() const;
-            document(string rootName = "root");
+            explicit document(string rootName = "root");
             ~document();
             void load(std::ifstream& fin);
             void loadXml(string& xml);

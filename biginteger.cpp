@@ -2,13 +2,10 @@
 
 namespace mc {
 
-    BigInteger::BigInteger() {
-        sign = SIGN::plus;
-        value = 0;
+    BigInteger::BigInteger() : sign(SIGN::plus), value(0) {
     }
 
-    BigInteger::BigInteger(int64_t p) {
-        sign = SIGN::plus;
+    BigInteger::BigInteger(int64_t p) : sign(SIGN::plus) {
         if (p < 0) {
             sign = SIGN::minus;
             p = -p;
@@ -16,14 +13,10 @@ namespace mc {
         value = p;
     }
 
-    BigInteger::BigInteger(const BigInteger& p) {
-        sign = p.sign;
-        value = p.value;
+    BigInteger::BigInteger(const BigInteger& p) : sign(p.sign), value(p.value) {
     }
 
-    BigInteger::BigInteger(const BigNumber& p) {
-        sign = SIGN::plus;
-        value = p;
+    BigInteger::BigInteger(const BigNumber& p) : sign(SIGN::plus), value(p) {
     }
 
     BigInteger::BigInteger(const string& p) {
@@ -36,19 +29,19 @@ namespace mc {
         value = tmp;
     }
 
-    BigInteger BigInteger::operator=(const BigInteger& p) {
+    const BigInteger& BigInteger::operator=(const BigInteger& p) {
         sign = p.sign;
         value = p.value;
         return *this;
     }
 
-    BigInteger BigInteger::operator=(const BigNumber& p) {
+    const BigInteger& BigInteger::operator=(const BigNumber& p) {
         sign = SIGN::plus;
         value = p;
         return *this;
     }
 
-    BigInteger BigInteger::operator=(const string& p) {
+    const BigInteger& BigInteger::operator=(const string& p) {
         string tmp = p;
         sign = SIGN::plus;
         if (tmp[0] == '-') {
@@ -59,7 +52,7 @@ namespace mc {
         return *this;
     }
 
-    BigInteger BigInteger::operator=(const int64_t& p) {
+    const BigInteger& BigInteger::operator=(const int64_t& p) {
         int64_t tmp = p;
         sign = SIGN::plus;
         if (tmp < 0) {
@@ -80,7 +73,7 @@ namespace mc {
         return *this;
     }
 
-    BigInteger BigInteger::operator+(void) {
+    BigInteger BigInteger::operator+(void) const {
         return *this;
     }
 
@@ -143,6 +136,14 @@ namespace mc {
             result.insert(result.begin(), '-');
         }
         return result;
+    }
+
+    size_t BigInteger::NrOfDigits() const {
+        return value.NrOfDigits();
+    }
+
+    BigInteger::SIGN BigInteger::Sign() const {
+        return sign;
     }
 
     BigInteger operator+(const BigInteger& p1, const BigInteger& p2) {
