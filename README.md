@@ -5,3 +5,4 @@ some small libraries
 * [mccsv](https://github.com/mcroitor/mclib/tree/master/mccsv/mccsv)
 * [geometry](https://github.com/mcroitor/mclib/tree/master/geometry/geometry)
 * [polynomial](https://github.com/mcroitor/mclib/tree/master/polynomial/polynomial)
+* [money](https://github.com/mcroitor/mclib/tree/master/money/money)
