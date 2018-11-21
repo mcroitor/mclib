@@ -6,3 +6,4 @@ some small libraries
 * [geometry](https://github.com/mcroitor/mclib/tree/master/geometry/geometry)
 * [polynomial](https://github.com/mcroitor/mclib/tree/master/polynomial/polynomial)
 * [money](https://github.com/mcroitor/mclib/tree/master/money/money)
+* [tamplier](https://github.com/mcroitor/mclib/tree/master/tamplier/tamplier)
