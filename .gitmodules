@@ -4,3 +4,6 @@
 [submodule "mccsv"]
 	path = mccsv
 	url = https://github.com/mcroitor/mccsv
+[submodule "money"]
+	path = money
+	url = https://github.com/mcroitor/money
