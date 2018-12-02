@@ -13,3 +13,6 @@
 [submodule "properties"]
 	path = properties
 	url = https://github.com/mcroitor/properties
+[submodule "tamplier"]
+	path = tamplier
+	url = https://github.com/mcroitor/tamplier
