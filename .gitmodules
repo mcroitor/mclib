@@ -7,3 +7,6 @@
 [submodule "money"]
 	path = money
 	url = https://github.com/mcroitor/money
+[submodule "polynomial"]
+	path = polynomial
+	url = https://github.com/mcroitor/polynomial
