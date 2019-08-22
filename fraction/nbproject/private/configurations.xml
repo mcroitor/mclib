@@ -8,6 +8,8 @@
       </df>
       <in>fraction.cpp</in>
       <in>fraction.h</in>
+      <in>readme.md</in>
+      <in>tests.cpp</in>
     </df>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>

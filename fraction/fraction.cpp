@@ -20,25 +20,30 @@ namespace mc {
     // realization
 
     fraction::fraction()
-    : numerator(0), denominator(1) {
+    : numerator_(0), denominator_(1) {
     }
 
     fraction::fraction(const fraction& orig)
-    : numerator(orig.numerator), denominator(orig.denominator) {
+    : numerator_(orig.numerator_), denominator_(orig.denominator_) {
     }
 
     fraction::fraction(const int n, const int d)
-    : numerator(n), denominator(d) {
+    : numerator_(n), denominator_(d) {
+        normalize();
+    }
+    
+    fraction::fraction(const double p)
+    : numerator_(p / fraction::EPS), denominator_(1. / fraction::EPS) {
         normalize();
     }
 
     fraction::fraction(const int n)
-    : numerator(n), denominator(1) {
+    : numerator_(n), denominator_(1) {
     }
 
     fraction fraction::operator=(const fraction& orig) {
-        numerator = orig.numerator;
-        denominator = orig.denominator;
+        numerator_ = orig.numerator_;
+        denominator_ = orig.denominator_;
         return * this;
     }
 
@@ -46,43 +51,52 @@ namespace mc {
     }
 
     void fraction::normalize() {
-        int tmp = gcd(_abs(numerator), _abs(denominator));
-        numerator /= _sign(denominator) * tmp;
-        denominator /= _sign(denominator) * tmp;
+        int tmp = gcd(_abs(numerator_), _abs(denominator_));
+        numerator_ /= _sign(denominator_) * tmp;
+        denominator_ /= _sign(denominator_) * tmp;
     }
 
     std::string fraction::to_string() const {
         std::ostringstream strout;
-        strout << numerator << " / " << denominator;
+        strout << numerator_ << " / " << denominator_;
         return strout.str();
     }
 
     double fraction::value() const {
-        return double(numerator) / denominator;
+        return double(numerator_) / denominator_;
     }
+
+    int fraction::numerator() const {
+        return numerator_;
+    }
+
+    int fraction::denominator() const {
+        return denominator_;
+    }
+
     //operators
 
     void fraction::operator*=(const fraction& p) {
-        numerator *= p.numerator;
-        denominator *= p.denominator;
+        numerator_ *= p.numerator_;
+        denominator_ *= p.denominator_;
         normalize();
     }
 
     void fraction::operator/=(const fraction& p) {
-        numerator *= p.denominator;
-        denominator *= p.numerator;
+        numerator_ *= p.denominator_;
+        denominator_ *= p.numerator_;
         normalize();
     }
 
     void fraction::operator+=(const fraction& p) {
-        numerator = numerator * p.denominator + p.numerator*denominator;
-        denominator *= p.denominator;
+        numerator_ = numerator_ * p.denominator_ + p.numerator_*denominator_;
+        denominator_ *= p.denominator_;
         normalize();
     }
 
     void fraction::operator-=(const fraction& p) {
-        numerator = numerator * p.denominator - p.numerator*denominator;
-        denominator *= p.denominator;
+        numerator_ = numerator_ * p.denominator_ - p.numerator_*denominator_;
+        denominator_ *= p.denominator_;
         normalize();
     }
 
