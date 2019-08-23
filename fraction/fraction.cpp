@@ -5,15 +5,15 @@
 
 namespace mc {
 
-    int gcd(int a, int b) {
+    long long gcd(long long a, long long b) {
         return (b == 0) ? a : gcd(b, a % b);
     }
 
-    int _abs(int p) {
-        return (p > 0) ? p : -p;
+    long long abs(long long p) {
+        return (p < 0) ? -p : p;
     }
 
-    int _sign(int p) {
+    long long sign(long long p) {
         return (p < 0) ? -1 : 1;
     }
 
@@ -27,17 +27,19 @@ namespace mc {
     : numerator_(orig.numerator_), denominator_(orig.denominator_) {
     }
 
-    fraction::fraction(const int n, const int d)
-    : numerator_(n), denominator_(d) {
-        normalize();
-    }
-    
-    fraction::fraction(const double p)
-    : numerator_(p / fraction::EPS), denominator_(1. / fraction::EPS) {
+    fraction::fraction(const long long n, const long long d) {
+        numerator_ = n;
+        denominator_ = d;
         normalize();
     }
 
-    fraction::fraction(const int n)
+    fraction::fraction(const double p) {
+        numerator_ = p / fraction::EPS;
+        denominator_ = 1. / fraction::EPS;
+        normalize();
+    }
+
+    fraction::fraction(const long long n)
     : numerator_(n), denominator_(1) {
     }
 
@@ -51,9 +53,10 @@ namespace mc {
     }
 
     void fraction::normalize() {
-        int tmp = gcd(_abs(numerator_), _abs(denominator_));
-        numerator_ /= _sign(denominator_) * tmp;
-        denominator_ /= _sign(denominator_) * tmp;
+        long long tmp = gcd(mc::abs(numerator_), mc::abs(denominator_));
+        long long sign = mc::sign(numerator_) * mc::sign(denominator_);
+        numerator_ = sign * mc::abs(numerator_) / tmp;
+        denominator_ = mc::abs(denominator_) / tmp;
     }
 
     std::string fraction::to_string() const {
@@ -66,11 +69,11 @@ namespace mc {
         return double(numerator_) / denominator_;
     }
 
-    int fraction::numerator() const {
+    long long fraction::numerator() const {
         return numerator_;
     }
 
-    int fraction::denominator() const {
+    long long fraction::denominator() const {
         return denominator_;
     }
 
@@ -125,15 +128,31 @@ namespace mc {
     }
 
     bool operator==(const fraction& p1, const fraction& p2) {
-        return p1.to_string() == p2.to_string();
+        return p1.numerator() * p2.denominator() == p2.numerator() * p1.denominator();
+    }
+
+    bool operator!=(const fraction& p1, const fraction& p2) {
+        return !(p1 == p2);
     }
 
     bool operator<(const fraction& p1, const fraction& p2) {
         return p1.value() < p2.value();
     }
 
+    bool operator<=(const fraction& p1, const fraction& p2) {
+        return !(p2 < p2);
+    }
+
+    bool operator>(const fraction& p1, const fraction& p2) {
+        return p2 < p1;
+    }
+
+    bool operator>=(const fraction& p1, const fraction& p2) {
+        return !(p1 < p2);
+    }
+
     std::istream& operator>>(std::istream& in, fraction& p) {
-        int n, d;
+        long long n, d;
         char fix; // is a slash sign
         in >> n >> fix >> d;
         p = fraction(n, d);

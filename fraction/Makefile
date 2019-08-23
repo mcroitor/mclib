@@ -13,7 +13,8 @@ all: directories $(OUT)
 directories: $(OBJDIR) $(BUILDDIR)
 
 test: $(OUT)
-	gcc tests.cpp -o$(BUILDDIR)/tests $(CXXFLAGS) -L$(BUILDDIR) -lfraction $(LDFLAGS)
+	$(CC) -c tests.cpp $(CXXFLAGS) -o $(OBJDIR)\tests.o
+	$(CC) $(OBJDIR)/tests.o $(OBJDIR)/fraction.o -o $(BUILDDIR)/tests $(LDFLAGS)
 	$(BUILDDIR)/tests
 
 $(OBJDIR):

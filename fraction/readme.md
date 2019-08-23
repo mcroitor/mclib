@@ -2,25 +2,29 @@
 
 Simple C++ class `fraction` provides manipulations with N/D fractions.
 
-Interface:
+## compiling
+
+just make it: `make`
+
+## testing
+
+for testing _catch_ library is used. `make test` is enough.
+## Interface:
 ```C++
 namespace mc {
-
-    using namespace std::rel_ops;
-
     class fraction {
     public:
         fraction();
         fraction(const fraction&);
-        fraction(const int, const int);
+        fraction(const long long, const long long);
         fraction(const double);
-        fraction(const int);
+        fraction(const long long);
         fraction operator=(const fraction&);
         virtual ~fraction();
 
         std::string to_string() const;
-        int numerator() const;
-        int denominator() const;
+        long long numerator() const;
+        long long denominator() const;
         double value() const;
 
         void operator+=(const fraction&);
@@ -30,7 +34,11 @@ namespace mc {
     };
 
     bool operator==(const fraction&, const fraction&);
+    bool operator!=(const fraction&, const fraction&);
     bool operator<(const fraction&, const fraction&);
+    bool operator<=(const fraction&, const fraction&);
+    bool operator>(const fraction&, const fraction&);
+    bool operator>=(const fraction&, const fraction&);
 
     fraction operator+(const fraction&, const fraction&);
     fraction operator-(const fraction&, const fraction&);
