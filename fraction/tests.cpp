@@ -11,10 +11,22 @@ TEST_CASE("constructor 1", "[fraction]") {
         REQUIRE(p.denominator() == 3);
     }
 
+    SECTION("yet another") {
+        mc::fraction p(12, 5);
+        REQUIRE(p.numerator() == 12);
+        REQUIRE(p.denominator() == 5);
+    }
+
     SECTION("normalize") {
         mc::fraction p(15, 36);
         REQUIRE(p.numerator() == 5);
         REQUIRE(p.denominator() == 12);
+    }
+
+    SECTION("yet another normalize") {
+        mc::fraction p(12, 3);
+        REQUIRE(p.numerator() == 4);
+        REQUIRE(p.denominator() == 1);
     }
 
     SECTION("with sign") {
@@ -59,5 +71,40 @@ TEST_CASE("compare", "[fraction]") {
         mc::fraction p3(-0.25);
         REQUIRE(p1 > p3);
         REQUIRE(p1 < p2);
+    }
+};
+
+TEST_CASE("arithmetical", "[fraction]") {
+
+    SECTION("+") {
+        mc::fraction p1(1, 3);
+        mc::fraction p2(1, 6);
+        mc::fraction result = p1 + p2;
+        REQUIRE(result.numerator() == 1);
+        REQUIRE(result.denominator() == 2);
+    }
+
+    SECTION("-") {
+        mc::fraction p1(1, 3);
+        mc::fraction p2(1, 12);
+        mc::fraction result = p1 - p2;
+        REQUIRE(result.numerator() == 1);
+        REQUIRE(result.denominator() == 4);
+    }
+
+    SECTION("*") {
+        mc::fraction p1(2, 3);
+        mc::fraction p2(1, 6);
+        mc::fraction result = p1 * p2;
+        REQUIRE(result.numerator() == 1);
+        REQUIRE(result.denominator() == 9);
+    }
+
+    SECTION("/") {
+        mc::fraction p1 = 3;
+        mc::fraction p2(1, 3);
+        mc::fraction result = p1 / p2;
+        REQUIRE(result.numerator() == 9);
+        REQUIRE(result.denominator() == 1);
     }
 };

@@ -43,6 +43,10 @@ namespace mc {
     : numerator_(n), denominator_(1) {
     }
 
+    fraction::fraction(const int n)
+    : numerator_(n), denominator_(1) {
+    }
+
     fraction fraction::operator=(const fraction& orig) {
         numerator_ = orig.numerator_;
         denominator_ = orig.denominator_;

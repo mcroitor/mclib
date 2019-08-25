@@ -18,6 +18,7 @@ namespace mc {
         fraction(const long long, const long long);
         fraction(const double);
         fraction(const long long);
+        fraction(const int);
         fraction operator=(const fraction&);
         virtual ~fraction();
 
