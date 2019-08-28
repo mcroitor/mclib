@@ -18,6 +18,8 @@ namespace mc {
     }
 
     // realization
+    
+    const double fraction::EPS = 0.0000001;
 
     fraction::fraction()
     : numerator_(0), denominator_(1) {
@@ -130,9 +132,22 @@ namespace mc {
         tmp /= p2;
         return tmp;
     }
+    
+    fraction sqrt(const fraction& p){
+        fraction result = 1;
+        while(result * result != p){
+            std::cout << "p = " << result << std::endl;
+            result = (result + p/result) / 2;
+        }
+        return result;
+    }
+    
+    fraction abs(const fraction& p){
+        return fraction(abs(p.numerator()), abs(p.denominator()));
+    }
 
     bool operator==(const fraction& p1, const fraction& p2) {
-        return p1.numerator() * p2.denominator() == p2.numerator() * p1.denominator();
+        return abs(p1 - p2) < fraction::EPS;
     }
 
     bool operator!=(const fraction& p1, const fraction& p2) {

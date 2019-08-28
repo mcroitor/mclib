@@ -10,9 +10,10 @@ namespace mc {
     class fraction {
         long long numerator_, denominator_;
 
-        const double EPS = 0.0000001;
         void normalize();
     public:
+        const static double EPS;
+
         fraction();
         fraction(const fraction&);
         fraction(const long long, const long long);
@@ -44,6 +45,9 @@ namespace mc {
     fraction operator-(const fraction&, const fraction&);
     fraction operator*(const fraction&, const fraction&);
     fraction operator/(const fraction&, const fraction&);
+    
+    fraction abs(const fraction&);
+    fraction sqrt(const fraction&);
 
     std::istream& operator>>(std::istream&, fraction&);
     std::ostream& operator<<(std::ostream&, const fraction&);

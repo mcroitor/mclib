@@ -108,3 +108,12 @@ TEST_CASE("arithmetical", "[fraction]") {
         REQUIRE(result.denominator() == 1);
     }
 };
+
+TEST_CASE("square test", "[fraction]") {
+
+    SECTION("square test") {
+        mc::fraction p(1, 4);
+        mc::fraction result = mc::sqrt(p);
+        REQUIRE(result == mc::fraction(1, 2));
+    }
+};
