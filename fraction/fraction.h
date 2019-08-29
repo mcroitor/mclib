@@ -26,13 +26,15 @@ namespace mc {
         std::string to_string() const;
         long long numerator() const;
         long long denominator() const;
-        double value() const;
+        double value() const;      
 
         void operator+=(const fraction&);
         void operator-=(const fraction&);
         void operator*=(const fraction&);
         void operator/=(const fraction&);
     };
+    
+    const static fraction EPS = fraction(fraction::EPS);
 
     bool operator==(const fraction&, const fraction&);
     bool operator!=(const fraction&, const fraction&);
@@ -46,6 +48,7 @@ namespace mc {
     fraction operator*(const fraction&, const fraction&);
     fraction operator/(const fraction&, const fraction&);
     
+    fraction reduce(const fraction&);
     fraction abs(const fraction&);
     fraction sqrt(const fraction&);
 

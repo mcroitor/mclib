@@ -34,7 +34,7 @@ TEST_CASE("constructor 1", "[fraction]") {
         REQUIRE(p.numerator() == -3);
         REQUIRE(p.denominator() == 5);
     }
-};
+}
 
 TEST_CASE("constructor 2", "[fraction]") {
 
@@ -55,7 +55,7 @@ TEST_CASE("constructor 2", "[fraction]") {
         REQUIRE(p.numerator() == -1);
         REQUIRE(p.denominator() == 2);
     }
-};
+}
 
 TEST_CASE("compare", "[fraction]") {
 
@@ -72,7 +72,7 @@ TEST_CASE("compare", "[fraction]") {
         REQUIRE(p1 > p3);
         REQUIRE(p1 < p2);
     }
-};
+}
 
 TEST_CASE("arithmetical", "[fraction]") {
 
@@ -107,13 +107,40 @@ TEST_CASE("arithmetical", "[fraction]") {
         REQUIRE(result.numerator() == 9);
         REQUIRE(result.denominator() == 1);
     }
-};
+}
 
 TEST_CASE("square test", "[fraction]") {
 
-    SECTION("square test") {
+    SECTION("square test 1/4") {
         mc::fraction p(1, 4);
         mc::fraction result = mc::sqrt(p);
         REQUIRE(result == mc::fraction(1, 2));
     }
-};
+
+    SECTION("square test 4/9") {
+        mc::fraction p(4, 9);
+        mc::fraction result = mc::sqrt(p);
+        REQUIRE(result == mc::fraction(2, 3));
+    }
+
+    SECTION("square test 1/1024") {
+        mc::fraction p(1, 1024);
+        mc::fraction result = mc::sqrt(p);
+        REQUIRE(result == mc::fraction(1, 32));
+    }
+}
+
+TEST_CASE("try to reduce fraction!", "[fraction]") {
+
+    SECTION("try to reduce test 1/4") {
+        mc::fraction p(1, 4);
+        mc::fraction result = mc::reduce(p);
+        REQUIRE(result == mc::fraction(1, 4));
+    }
+    
+        SECTION("try to reduce test 0.333333") {
+        mc::fraction p(0.333333);
+        mc::fraction result = mc::reduce(p);
+        REQUIRE(result == mc::fraction(1, 3));
+    }
+}

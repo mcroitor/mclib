@@ -1,7 +1,8 @@
 CC = gcc
 AR = ar
-CXXFLAGS = -O2 -std=c++14
-CFLAGS = -O2
+DEBUG = # -g -Wall
+CXXFLAGS = -O2 -std=c++14 $(DEBUG)
+CFLAGS = -O2 $(DEBUG)
 ARFLAGS = rcs
 LDFLAGS = -lstdc++
 OUT = libfraction.a

@@ -18,8 +18,8 @@ namespace mc {
     }
 
     // realization
-    
-    const double fraction::EPS = 0.0000001;
+
+    const double fraction::EPS = 0.000001;
 
     fraction::fraction()
     : numerator_(0), denominator_(1) {
@@ -132,22 +132,9 @@ namespace mc {
         tmp /= p2;
         return tmp;
     }
-    
-    fraction sqrt(const fraction& p){
-        fraction result = 1;
-        while(result * result != p){
-            std::cout << "p = " << result << std::endl;
-            result = (result + p/result) / 2;
-        }
-        return result;
-    }
-    
-    fraction abs(const fraction& p){
-        return fraction(abs(p.numerator()), abs(p.denominator()));
-    }
 
     bool operator==(const fraction& p1, const fraction& p2) {
-        return abs(p1 - p2) < fraction::EPS;
+        return abs(p1 - p2) < EPS;
     }
 
     bool operator!=(const fraction& p1, const fraction& p2) {
@@ -159,7 +146,7 @@ namespace mc {
     }
 
     bool operator<=(const fraction& p1, const fraction& p2) {
-        return !(p2 < p2);
+        return !(p2 < p1);
     }
 
     bool operator>(const fraction& p1, const fraction& p2) {
@@ -181,5 +168,58 @@ namespace mc {
     std::ostream& operator<<(std::ostream& out, const fraction& p) {
         out << p.to_string();
         return out;
+    }
+
+    // additional functions
+
+    fraction reduce(const fraction& p) {
+        fraction tmp = p;
+        while (tmp.denominator() == p.denominator()) {
+            tmp = fraction(tmp.numerator() - 1, tmp.denominator());
+        }
+        if (tmp == p) {
+            return tmp;
+        }
+        tmp = p;
+        while (tmp.denominator() == p.denominator()) {
+            tmp = fraction(tmp.numerator() + 1, tmp.denominator());
+        }
+        if (tmp == p) {
+            return tmp;
+        }
+        tmp = p;
+        while (tmp.denominator() == p.denominator()) {
+            tmp = fraction(tmp.numerator(), tmp.denominator() + 1);
+        }
+        if (tmp == p) {
+            return tmp;
+        }
+        tmp = p;
+        while (tmp.denominator() == p.denominator()) {
+            tmp = fraction(tmp.numerator(), tmp.denominator() - 1);
+        }
+        if (tmp == p) {
+            return tmp;
+        }
+        return p;
+    }
+
+    fraction sqrt(const fraction& p) {
+        fraction result = 1;
+        size_t count = 0;
+        while (result * result != p) {
+            result = (result + p / result) / 2;
+            result = reduce(result);
+            std::cout << count << " : " << result << std::endl; 
+            ++ count;
+            if(count > 4){
+                break;
+            }
+        }
+        return result;
+    }
+
+    fraction abs(const fraction& p) {
+        return fraction(abs(p.numerator()), abs(p.denominator()));
     }
 }
