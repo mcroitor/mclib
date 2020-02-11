@@ -8,3 +8,4 @@ some small libraries
 * [money](https://github.com/mcroitor/money) -- currency / money library, ISO4217
 * [tamplier](https://github.com/mcroitor/tamplier) -- fill templates by defined rules
 * [timemarker](https://github.com/mcroitor/timemarker) -- simple time measurement instrument
+* [fraction](https://github.com/mcroitor/fraction) -- representation of fraction as _numerator_ / _denominator_.
