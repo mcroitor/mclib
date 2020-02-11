@@ -173,35 +173,36 @@ namespace mc {
     // additional functions
 
     fraction reduce(const fraction& p) {
+        fraction result = p;
         fraction tmp = p;
         while (tmp.denominator() == p.denominator()) {
             tmp = fraction(tmp.numerator() - 1, tmp.denominator());
         }
-        if (tmp == p) {
-            return tmp;
+        if (tmp == p && tmp.denominator() < result.denominator()) {
+            result = tmp;
         }
         tmp = p;
         while (tmp.denominator() == p.denominator()) {
             tmp = fraction(tmp.numerator() + 1, tmp.denominator());
         }
-        if (tmp == p) {
-            return tmp;
+        if (tmp == p && tmp.denominator() < result.denominator()) {
+            result = tmp;
         }
         tmp = p;
         while (tmp.denominator() == p.denominator()) {
             tmp = fraction(tmp.numerator(), tmp.denominator() + 1);
         }
-        if (tmp == p) {
-            return tmp;
+        if (tmp == p && tmp.denominator() < result.denominator()) {
+            result = tmp;
         }
         tmp = p;
         while (tmp.denominator() == p.denominator()) {
             tmp = fraction(tmp.numerator(), tmp.denominator() - 1);
         }
-        if (tmp == p) {
-            return tmp;
+        if (tmp == p && tmp.denominator() < result.denominator()) {
+            result = tmp;
         }
-        return p;
+        return result;
     }
 
     fraction sqrt(const fraction& p) {
