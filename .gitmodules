@@ -19,3 +19,6 @@
 [submodule "timemarker"]
 	path = timemarker
 	url = git://github.com/mcroitor/timemarker.git
+[submodule "fraction"]
+	path = fraction
+	url = https://github.com/mcroitor/fraction.git
