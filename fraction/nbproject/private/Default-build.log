@@ -1,2 +1,0 @@
-gcc -c fraction.cpp -O2 -std=c++14 -o obj/fraction.o
-ar rcs build/libfraction.a obj/fraction.o
